@@ -13,6 +13,7 @@ data/staging/
 # Power BI (PBIP): caché y ajustes locales
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+**/.pbi/editorSettings.json
 
 # Sistema
 .DS_Store
