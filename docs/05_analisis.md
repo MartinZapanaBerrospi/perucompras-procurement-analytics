@@ -25,7 +25,7 @@ que 2026 cae a la mitad.
 | P2 | ¿Dónde se depende de pocos proveedores? | **No en los catálogos que importan.** Los 7 más grandes (89 % del monto) tienen concentración baja. Pero **hay 35 % menos proveedores activos que en 2022** |
 | P3 | ¿Quién compra? | **99 de 2 348 entidades (4 %) hacen la mitad del gasto.** EsSalud encabeza con S/ 288 millones |
 | P4 | ¿Cuándo se compra? | **Un tercio del gasto anual se va de octubre a diciembre**; noviembre es el mes pico. Enero casi no existe (0,9 %) |
-| P5′ | ¿Se usa la Gran Compra donde corresponde? | El 58 % del monto pasa por Gran Compra. Hay **tres señales de control**: 785 compras ordinarias sobre el umbral, un amontonamiento justo por debajo de S/ 100 000 y 854 casos de compras partidas el mismo día. Las tres **se debilitan con los años** |
+| P5′ | ¿Se usa la Gran Compra donde corresponde? | El 58 % del monto pasa por Gran Compra. Hay **tres señales de control**: 785 compras ordinarias sobre el umbral, un amontonamiento justo por debajo de S/ 100 000 y 854 casos de compras partidas el mismo día. Las tres **son menores en 2025 que en 2022** |
 
 ## P1. ¿Cuánto se compra, en qué y cómo cambia?
 
@@ -181,7 +181,7 @@ catálogo, dos o más compras ordinarias. Cada una estaba por debajo de S/ 100 0
 superan. Suman 2 824 órdenes y S/ 124,3 millones. Los catálogos con más casos son impresoras
 (201), útiles (180) y computadoras (147).
 
-**Las tres señales bajan con el tiempo:**
+**Las tres señales son menores en 2025 que en 2022,** aunque no bajan todos los años (las compras sobre el umbral suben de 140 a 148 entre 2024 y 2025):
 
 | | 2022 | 2023 | 2024 | 2025 | 2026 (ene–set) |
 |---|---|---|---|---|---|

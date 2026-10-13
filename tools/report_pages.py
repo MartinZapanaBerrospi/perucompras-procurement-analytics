@@ -371,7 +371,7 @@ p5 = {"name": "p5_calendario", "displayName": "5. Calendario", "visuals": [
         f"últimos 10 días del año suman {pct(k('participacion_ultimos_10_dias_prom'))} del gasto.",
         f"Enero ({pct(k('participacion_enero'))}) y febrero ({pct(k('participacion_febrero'))}) son el arranque del "
         "año fiscal, con presupuestos todavía por habilitar.",
-        "2026 no aparece en esta página porque aún no termina.",
+        "2026 queda fuera de los gráficos y de las columnas de cierre porque aún no termina.",
     ]),
     footer(),
 ]}
@@ -379,7 +379,7 @@ p5 = {"name": "p5_calendario", "displayName": "5. Calendario", "visuals": [
 p6 = {"name": "p6_gran_compra", "displayName": "6. Gran Compra", "visuals": [
     title("¿Se usa la Gran Compra donde corresponde?",
           f"{pct(k('pct_gran_compra_total'), 0)} del monto pasa por Gran Compra (obligatoria desde S/ 100 000). "
-          "Tres señales para revisar, y las tres bajan con los años"),
+          "Tres señales para revisar, las tres menores en 2025 que en 2022"),
     year_slicer(),
     card("kpi_gran_compra", 24, 88, 296, 92, "% Gran Compra", "Monto por Gran Compra"),
     card("kpi_sobre_umbral", 336, 88, 296, 92, "Órdenes ordinarias sobre el umbral", "Compras ordinarias de S/ 100 000 o más"),
