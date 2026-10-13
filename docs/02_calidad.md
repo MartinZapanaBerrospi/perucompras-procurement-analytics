@@ -1,6 +1,6 @@
 # Fase 2 — Calidad de los datos
 
-> Estado: **cerrada** (2026-10-13), salvo la decisión sobre la pregunta P5
+> Estado: **cerrada** (2026-10-13). La P5 se reemplazó por la P5′
 > ([sección 9](#9-qué-pasa-con-la-pregunta-p5)).
 
 ## 1. Resumen
@@ -203,7 +203,7 @@ respuesta de la Fase 2 es **descartarla como indicador de gestión**, por tres r
 3. **Un indicador con un quiebre así llevaría a gerencia a conclusiones falsas.** Un mes "malo"
    no se distinguiría de un mes sin actualización.
 
-**Propuesta de reemplazo, pendiente de aprobación:**
+**Reemplazo aprobado el 2026-10-13:**
 **P5′ — ¿Se usa la Gran Compra donde corresponde?** La Gran Compra es obligatoria desde
 S/ 100 000 y hace competir automáticamente a todos los proveedores del catálogo. Los datos
 permiten medir dos cosas:

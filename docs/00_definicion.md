@@ -31,10 +31,11 @@ compra frente al resto.
 | P2 | ¿En qué catálogos la venta depende de pocos proveedores? | Página *Concentración* |
 | P3 | ¿Qué entidades concentran el gasto, y en qué catálogos? | Página *Entidades* |
 | P4 | ¿Cómo se reparte la compra a lo largo del año? | Página *Calendario* |
-| P5 | ¿Qué parte de las órdenes figura pagada al mes siguiente, y dónde se atrasa? | Página *Pagos* (sujeta a la Fase 2) |
+| P5′ | ¿Se usa la Gran Compra donde corresponde? | Página *Gran Compra* |
 
-P5 depende de que el estado de la orden sea comparable entre meses; ver el problema 6 de la
-[sección 4.2](#42-problemas-de-calidad-detectados).
+**Cambio aprobado en la Fase 2.** La P5 original (*¿qué parte de las órdenes figura pagada al mes
+siguiente?*) se descartó: el estado "Pagada" tiene un quiebre de siete meses que no refleja la
+realidad ([Fase 2, sección 9](02_calidad.md#9-qué-pasa-con-la-pregunta-p5)). La reemplaza la P5′.
 
 ## 2. Indicadores
 
@@ -51,7 +52,7 @@ Montos en soles, **con IGV** (columna `TOTAL`), tal como los publica Perú Compr
 | Proveedores que suman el 80 % | Menor número de proveedores que acumula el 80 % del monto | Calculada |
 | Participación del último trimestre | Monto de octubre a diciembre / Monto del año | `FECHA_FORMALIZACIÓN` |
 | Peso de la Gran Compra | Monto en `Gran Compra` / Monto total | `TIPO_PROCEDIMIENTO` |
-| Órdenes pagadas al mes siguiente | Órdenes en estado `PAGADA` / Órdenes del mes, según el corte de cada archivo | `ESTADO_ORDEN_ELECTRÓNICA` |
+| Compras ordinarias sobre el umbral | Órdenes por *Compra ordinaria* de S/ 100 000 o más, y su monto | `TIPO_PROCEDIMIENTO`, `TOTAL` |
 | Variación interanual | Valor del periodo frente al mismo periodo del año anterior | Calculada |
 
 Todos los ratios se calculan desde montos o conteos (suma sobre suma); nunca se promedian

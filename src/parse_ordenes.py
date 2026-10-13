@@ -11,7 +11,10 @@ import re
 import unicodedata
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
+
+from src import config
 
 # Nombre en el archivo -> nombre en el proyecto. El diccionario oficial llama DOCUMENTO_ESTADO a
 # la columna que en los archivos es DOCUMENTO_ESTADO_OCAM (problema 3).
@@ -105,3 +108,44 @@ def split_framework(value: str) -> tuple[str, str]:
     desde 2024-06, solo el nombre. Devuelve (código o '', nombre)."""
     match = FRAMEWORK_RE.match(value.strip())
     return match.group("codigo") or "", match.group("nombre").strip()
+
+
+# ---------------------------------------------------------------------------------------------
+# Todas las órdenes
+# ---------------------------------------------------------------------------------------------
+
+def load_orders() -> pd.DataFrame:
+    """Lee los archivos del manifiesto, en orden, y agrega el mes de cada archivo."""
+    with config.MANIFEST.open(encoding="utf-8", newline="") as f:
+        manifest = list(csv.DictReader(f))
+    frames = []
+    for row in manifest:
+        df = read_raw(config.ROOT / row["archivo"])
+        df.insert(0, "periodo_archivo", row["periodo"])
+        frames.append(df)
+    return pd.concat(frames, ignore_index=True)
+
+
+def clean(raw: pd.DataFrame) -> pd.DataFrame:
+    """Aplica las reglas de campo (problemas 1, 2, 4 y 6) y asigna el catálogo estable."""
+    df = strip_fields(raw)
+    for col in DATE_COLUMNS:
+        df[col] = parse_date(df[col])
+    for col in AMOUNT_COLUMNS:
+        df[col] = parse_amount(df[col])
+    parts = df["acuerdo_marco"].map(split_framework)
+    df["codigo_acuerdo"] = parts.str[0]
+    df["clave_catalogo"] = parts.str[1].map(normalize_text)
+    catalogs = pd.read_csv(config.CATALOGS)
+    return df.merge(catalogs[["clave_normalizada", "catalogo", "rubro"]],
+                    left_on="clave_catalogo", right_on="clave_normalizada", how="left").drop(
+        columns="clave_normalizada")
+
+
+def outlier_thresholds(total: pd.Series) -> tuple[float, float]:
+    """Problemas 13 y 14: límites de Q1 − k·RIC y Q3 + k·RIC sobre log10(monto), en soles."""
+    log_total = np.log10(total)
+    q1, q3 = log_total.quantile([0.25, 0.75])
+    iqr = q3 - q1
+    k = config.OUTLIER_IQR_FACTOR
+    return 10 ** (q1 - k * iqr), 10 ** (q3 + k * iqr)
