@@ -18,7 +18,7 @@ en cada catálogo, quién compra y en qué momento del año?
 |---|---|---|
 | 0. Definición | Cerrada | [00_definicion.md](docs/00_definicion.md) |
 | 1. Adquisición | Cerrada | [01_adquisicion.md](docs/01_adquisicion.md) |
-| 2. Calidad | En curso | — |
+| 2. Calidad | Cerrada | [02_calidad.md](docs/02_calidad.md) |
 | 3. Transformación | Pendiente | — |
 | 4. Modelado | Pendiente | — |
 | 5. Análisis | Pendiente | — |
@@ -27,9 +27,10 @@ en cada catálogo, quién compra y en qué momento del año?
 | 8. Automatización | Pendiente | — |
 | 9. Publicación | Pendiente | — |
 
-**Validación previa.** Los archivos del portal suman S/ 1 934,6 millones de bienes en 2024 y
-S/ 1 778,9 millones en 2025. Las Infocifras oficiales de Perú Compras dan S/ 1 939,34 y
-S/ 1 792,44 millones: diferencias de −0,24 % y −0,75 %.
+**Lo que valida el resultado.** Los datos reconstruyen las cifras oficiales de Perú Compras de
+2022 a 2025, por año y por tipo de procedimiento, con una diferencia máxima de 0,87 %. En 2022 la
+diferencia es de 0,001 %. La calidad se mide con 59 reglas en seis dimensiones; el detalle está en
+la [Fase 2](docs/02_calidad.md).
 
 ## Fuentes y licencia
 

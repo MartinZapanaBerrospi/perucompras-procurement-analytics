@@ -1,0 +1,16 @@
+anio,concepto,medida,oficial,calculado,fuente,diferencia_pct,tolerancia_pct,resultado
+2022,bienes,monto_soles,1994660000.0,1994648778.35,Boletín estadístico de Acuerdos Marco N.° 12-2022,-0.001,1.0,cumple
+2022,gran_compra,monto_soles,1152530000.0,1152530685.58,Boletín estadístico de Acuerdos Marco N.° 12-2022,0.0,1.0,cumple
+2022,compra_ordinaria,monto_soles,842130000.0,842118092.77,Boletín estadístico de Acuerdos Marco N.° 12-2022,-0.001,1.0,cumple
+2023,bienes,monto_soles,1885994048.23,1885319292.87,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.036,1.0,cumple
+2023,bienes,ordenes,116697.0,116625.0,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.062,1.0,cumple
+2023,gran_compra,monto_soles,1026431817.0,1026371637.3,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.006,1.0,cumple
+2023,gran_compra,ordenes,8747.0,8746.0,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.011,1.0,cumple
+2023,compra_ordinaria,monto_soles,859562231.23,858947655.57,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.071,1.0,cumple
+2023,compra_ordinaria,ordenes,107950.0,107879.0,Boletín estadístico de Acuerdos Marco N.° 12-2023,-0.066,1.0,cumple
+2024,bienes,monto_soles,1939340000.0,1934563063.65,Infocifras de Catálogos Electrónicos N.° 12-2024,-0.246,1.0,cumple
+2024,gran_compra,monto_soles,1172990000.0,1170357285.4,Infocifras de Catálogos Electrónicos N.° 12-2024,-0.224,1.0,cumple
+2024,compra_ordinaria,monto_soles,766350000.0,764205778.25,Infocifras de Catálogos Electrónicos N.° 12-2024,-0.28,1.0,cumple
+2025,bienes,monto_soles,1792440000.0,1778887274.56,Infocifras de Catálogos Electrónicos N.° 12-2025,-0.756,1.0,cumple
+2025,gran_compra,monto_soles,1113170000.0,1105555918.23,Infocifras de Catálogos Electrónicos N.° 12-2025,-0.684,1.0,cumple
+2025,compra_ordinaria,monto_soles,679270000.0,673331356.33,Infocifras de Catálogos Electrónicos N.° 12-2025,-0.874,1.0,cumple

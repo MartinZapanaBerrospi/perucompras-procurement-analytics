@@ -1,0 +1,13 @@
+anio,concepto,monto_soles,ordenes,fuente,ubicacion
+2022,bienes,1994660000,,Boletín estadístico de Acuerdos Marco N.° 12-2022,docs/fuentes/boletin_am_2022_12.pdf (p. 19 del boletín)
+2022,gran_compra,1152530000,,Boletín estadístico de Acuerdos Marco N.° 12-2022,docs/fuentes/boletin_am_2022_12.pdf (p. 19 del boletín)
+2022,compra_ordinaria,842130000,,Boletín estadístico de Acuerdos Marco N.° 12-2022,docs/fuentes/boletin_am_2022_12.pdf (p. 19 del boletín)
+2023,bienes,1885994048.23,116697,Boletín estadístico de Acuerdos Marco N.° 12-2023,docs/fuentes/boletin_am_2023_12.pdf (cuadro N.° 2)
+2023,gran_compra,1026431817,8747,Boletín estadístico de Acuerdos Marco N.° 12-2023,docs/fuentes/boletin_am_2023_12.pdf (cuadro N.° 2)
+2023,compra_ordinaria,859562231.23,107950,Boletín estadístico de Acuerdos Marco N.° 12-2023,docs/fuentes/boletin_am_2023_12.pdf (cuadro N.° 2)
+2024,bienes,1939340000,,Infocifras de Catálogos Electrónicos N.° 12-2024,docs/fuentes/infocifras_ce_2024_12.pdf
+2024,gran_compra,1172990000,,Infocifras de Catálogos Electrónicos N.° 12-2024,docs/fuentes/infocifras_ce_2024_12.pdf
+2024,compra_ordinaria,766350000,,Infocifras de Catálogos Electrónicos N.° 12-2024,docs/fuentes/infocifras_ce_2024_12.pdf
+2025,bienes,1792440000,,Infocifras de Catálogos Electrónicos N.° 12-2025,docs/fuentes/infocifras_ce_2025_12.pdf
+2025,gran_compra,1113170000,,Infocifras de Catálogos Electrónicos N.° 12-2025,docs/fuentes/infocifras_ce_2025_12.pdf
+2025,compra_ordinaria,679270000,,Infocifras de Catálogos Electrónicos N.° 12-2025,docs/fuentes/infocifras_ce_2025_12.pdf
