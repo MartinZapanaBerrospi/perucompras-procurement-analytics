@@ -1,7 +1,8 @@
 paso,descripcion,filas,ordenes_unicas,monto,columnas,nota
 1. raw,"57 CSV del portal, todo como texto",511782,511782,8518530614.92,19.0,Tal como se publican
 2. staging,Una tabla limpia y tipada,511782,511782,8518530614.92,23.0,Reglas de campo: 0 filas excluidas
-3. curated,fact_orden,511782,511782,8518530614.92,14.0,"Mismas filas; columnas sin uso fuera, marcas agregadas"
+3. curated,fact_orden,511782,511782,8518530614.92,15.0,"Mismas filas; columnas sin uso fuera, marcas agregadas"
 3a. marca,Compra efectiva (sin nulas ni resueltas),511442,511442,8511264017.18,,"Subconjunto, no exclusión"
 3b. marca,Atípicos de monto alto,120,120,1010899292.64,,"Subconjunto, no exclusión"
 3c. marca,Compras ordinarias sobre el umbral,785,785,121385236.21,,"Subconjunto, no exclusión"
+3d. marca,Posibles compras partidas,2824,2824,124271228.33,,"Subconjunto, no exclusión"

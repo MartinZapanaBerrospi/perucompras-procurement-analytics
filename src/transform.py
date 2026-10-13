@@ -93,6 +93,7 @@ def dim_fecha() -> pd.DataFrame:
         "mes": days.month,
         "mes_nombre": [MONTHS_ES[m - 1] for m in days.month],
         "anio_mes": days.strftime("%Y-%m"),
+        "mes_inicio": days.to_period("M").to_timestamp().date,   # primer día del mes: eje mensual continuo
         "dia_semana": [DAYS_ES[d] for d in days.dayofweek],
         "dia_semana_num": days.dayofweek + 1,     # 1 = lunes; ordena dia_semana en Power BI
         "es_fin_de_semana": (days.dayofweek >= 5).astype(int),
@@ -102,6 +103,20 @@ def dim_fecha() -> pd.DataFrame:
 # ---------------------------------------------------------------------------------------------
 # Hecho
 # ---------------------------------------------------------------------------------------------
+
+def possible_split(fact: pd.DataFrame) -> pd.Series:
+    """P5′: la orden pertenece a un grupo de 2 o más compras ordinarias de la misma entidad, al mismo
+    proveedor, en el mismo catálogo y el mismo día, cada una bajo el umbral de la Gran Compra pero
+    que juntas lo superan. Es una señal para revisar, no una prueba de fraccionamiento."""
+    threshold = config.GRAN_COMPRA_THRESHOLD
+    ordinary = fact["gran_compra"].eq(0)
+    keys = [fact["ruc_entidad"], fact["ruc_proveedor"], fact["catalogo_id"], fact["fecha"]]
+    total = fact["total"].where(ordinary)
+    group_size = total.groupby(keys).transform("count")
+    group_sum = total.groupby(keys).transform("sum")
+    group_max = total.groupby(keys).transform("max")
+    return ordinary & group_size.ge(2) & group_sum.ge(threshold) & group_max.lt(threshold)
+
 
 def fact_orden(df: pd.DataFrame, catalogs: pd.DataFrame) -> pd.DataFrame:
     low, high = outlier_thresholds(df["total"])
@@ -126,6 +141,7 @@ def fact_orden(df: pd.DataFrame, catalogs: pd.DataFrame) -> pd.DataFrame:
         "ordinaria_sobre_umbral": (df["tipo_procedimiento"].eq("Compra ordinaria")
                                    & df["total"].ge(config.GRAN_COMPRA_THRESHOLD)).astype(int),
     })
+    fact["posible_fraccionamiento"] = possible_split(fact).astype(int)
     return fact.sort_values(["fecha", "orden"]).reset_index(drop=True)
 
 
@@ -174,6 +190,9 @@ def lineage(raw: pd.DataFrame, staging: pd.DataFrame, fact: pd.DataFrame, states
         ("3c. marca", "Compras ordinarias sobre el umbral", int(fact["ordinaria_sobre_umbral"].sum()),
          int(fact["ordinaria_sobre_umbral"].sum()),
          fact.loc[fact["ordinaria_sobre_umbral"] == 1, "total"].sum(), None, "Subconjunto, no exclusión"),
+        ("3d. marca", "Posibles compras partidas", int(fact["posible_fraccionamiento"].sum()),
+         int(fact["posible_fraccionamiento"].sum()),
+         fact.loc[fact["posible_fraccionamiento"] == 1, "total"].sum(), None, "Subconjunto, no exclusión"),
     ]
     out = pd.DataFrame(rows, columns=["paso", "descripcion", "filas", "ordenes_unicas", "monto", "columnas", "nota"])
     out["monto"] = out["monto"].round(2)

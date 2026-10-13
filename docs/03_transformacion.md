@@ -64,6 +64,7 @@ erDiagram
         int atipico_alto
         int atipico_bajo
         int ordinaria_sobre_umbral
+        int posible_fraccionamiento
     }
     dim_entidad {
         text ruc_entidad PK
@@ -100,7 +101,7 @@ erDiagram
 
 | Tabla | Grano | Filas | Tamaño |
 |---|---|---|---|
-| `fact_orden` | Una orden de compra | 511 782 | 44,5 MB |
+| `fact_orden` | Una orden de compra | 511 782 | 45,5 MB |
 | `dim_entidad` | Un RUC de entidad | 2 348 | 0,3 MB |
 | `dim_proveedor` | Un RUC de proveedor | 3 569 | 0,4 MB |
 | `dim_catalogo` | Un catálogo estable | 29 | — |
@@ -122,11 +123,12 @@ erDiagram
    resuelta). El tablero puede mostrar el monto oficial o solo las compras efectivas con el
    mismo filtro.
 5. **Columnas pequeñas en el hecho.** El hecho lleva códigos y marcas de 0/1 en lugar de textos
-   repetidos: `estado_id` es una letra y `gran_compra` es 0/1. Así pesa 44,5 MB, por debajo del
+   repetidos: `estado_id` es una letra y `gran_compra` es 0/1. Así pesa 45,5 MB, por debajo del
    aviso de 50 MB de GitHub (el límite es 100 MB).
 6. **El subtotal no se guarda:** es `total − igv`, y Power BI lo calcula si hace falta.
 7. **Un calendario propio** (`dim_fecha`) en español, con el año fiscal igual al calendario.
-   Permite que la estacionalidad (P4) se lea por mes, trimestre y día de la semana.
+   Permite que la estacionalidad (P4) se lea por mes, trimestre y día de la semana, y `mes_inicio`
+   (primer día del mes) da al tablero un eje mensual continuo.
 
 ## 4. Linaje de columnas
 
@@ -153,6 +155,7 @@ erDiagram
 | `atipico_alto` | Monto > S/ 3 444 382 (problema 14) | 120 | S/ 1 010,9 millones |
 | `atipico_bajo` | Monto < S/ 2,53 (problema 13) | 26 | S/ 35 |
 | `ordinaria_sobre_umbral` | Compra ordinaria ≥ S/ 100 000 (P5′, problema 17) | 785 | S/ 121,4 millones |
+| `posible_fraccionamiento` | Compra ordinaria que, con otras de la misma entidad, proveedor, catálogo y día, supera S/ 100 000 aunque cada una esté por debajo (P5′; se agregó en la Fase 6 para el tablero) | 2 824 | S/ 124,3 millones |
 
 La Fase 2 contó 119 atípicos altos y aquí son 120. Allá, una orden muy alta que además está
 anulada se contó solo como "estado que no es compra". Aquí las marcas son independientes: una
@@ -166,10 +169,11 @@ orden puede tener varias.
 |---|---|---|---|---|
 | 1. raw | 57 CSV del portal | 511 782 | S/ 8 518 530 615 | 19 |
 | 2. staging | Tabla limpia y tipada | 511 782 | S/ 8 518 530 615 | 23 |
-| 3. curated | `fact_orden` | 511 782 | S/ 8 518 530 615 | 14 |
+| 3. curated | `fact_orden` | 511 782 | S/ 8 518 530 615 | 15 |
 | 3a. marca | Compra efectiva (sin nulas ni resueltas) | 511 442 | S/ 8 511 264 017 | — |
 | 3b. marca | Atípicos de monto alto | 120 | S/ 1 010 899 293 | — |
 | 3c. marca | Compras ordinarias sobre el umbral | 785 | S/ 121 385 236 | — |
+| 3d. marca | Posibles compras partidas | 2 824 | S/ 124 271 228 | — |
 
 Los pasos 1, 2 y 3 tienen que coincidir en órdenes y en monto (±S/ 0,05 por redondeo). Si no
 coinciden, `transform.py` no escribe nada y termina con error.
@@ -191,8 +195,8 @@ los repite en GitHub Actions sobre los CSV versionados:
 
 ## 7. Límites y lo que viene
 
-- **El hecho crece unos 0,6 MB por mes.** Llegaría a 50 MB (el aviso de GitHub) en cerca de un
-  año. Si se actualiza, conviene partirlo por año.
+- **El hecho crece unos 0,6 MB por mes.** Llegaría a 50 MB (el aviso de GitHub) en unos siete
+  meses. Si se actualiza, conviene partirlo por año.
 - **Entidades sin tipo de gobierno.** Los archivos no dicen si una entidad es del gobierno
   nacional, regional o local, y clasificarlas por nombre sería poco fiable. El tablero lo dice en
   sus notas.

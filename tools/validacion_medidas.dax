@@ -24,6 +24,11 @@ UNION (
     ROW ( "contexto", "global", "clave", "total", "medida", "Órdenes atípicas altas", "valor", [Órdenes atípicas altas] ),
     ROW ( "contexto", "global", "clave", "total", "medida", "% del monto en atípicos altos", "valor", [% del monto en atípicos altos] ),
     ROW ( "contexto", "global", "clave", "total", "medida", "Órdenes que no son compra", "valor", [Órdenes que no son compra] ),
+    ROW ( "contexto", "global", "clave", "total", "medida", "Monto ordinario sobre el umbral (S/ millones)", "valor", [Monto ordinario sobre el umbral (S/ millones)] ),
+    ROW ( "contexto", "global", "clave", "total", "medida", "Órdenes en posibles compras partidas", "valor", [Órdenes en posibles compras partidas] ),
+    ROW ( "contexto", "global", "clave", "total", "medida", "Monto en posibles compras partidas (S/ millones)", "valor", [Monto en posibles compras partidas (S/ millones)] ),
+    ROW ( "contexto", "global", "clave", "total", "medida", "Monto ene–set (S/ millones)", "valor", [Monto ene–set (S/ millones)] ),
+    ROW ( "contexto", "global", "clave", "total", "medida", "Proveedores con ventas ene–set", "valor", [Proveedores con ventas ene–set] ),
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Monto", "valor", [Monto] ),
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Órdenes", "valor", [Órdenes] ),
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Var. interanual", "valor", [Var. interanual] ),
@@ -32,6 +37,8 @@ UNION (
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Participación de diciembre", "valor", [Participación de diciembre] ),
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "HHI", "valor", [HHI] ),
     SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Entidades compradoras", "valor", [Entidades compradoras] ),
+    SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Monto ene–set (S/ millones)", "valor", [Monto ene–set (S/ millones)] ),
+    SELECTCOLUMNS ( VALUES ( dim_fecha[anio] ), "contexto", "anio", "clave", FORMAT ( dim_fecha[anio], "0" ), "medida", "Proveedores con ventas ene–set", "valor", [Proveedores con ventas ene–set] ),
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "Monto", "valor", [Monto] ),
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "Órdenes", "valor", [Órdenes] ),
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "HHI", "valor", [HHI] ),
@@ -39,5 +46,7 @@ UNION (
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "Proveedores para el 80 %", "valor", [Proveedores para el 80 %] ),
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "Participación del líder", "valor", [Participación del líder] ),
     SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "% Gran Compra", "valor", [% Gran Compra] ),
-    SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "% ordinario sobre el umbral", "valor", [% ordinario sobre el umbral] )
+    SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], "medida", "% ordinario sobre el umbral", "valor", [% ordinario sobre el umbral] ),
+    SELECTCOLUMNS ( VALUES ( dim_fecha[mes] ), "contexto", "mes", "clave", FORMAT ( dim_fecha[mes], "0" ), "medida", "Participación promedio del mes", "valor", [Participación promedio del mes] ),
+    SELECTCOLUMNS ( FILTER ( VALUES ( fact_orden[tramo_umbral_miles] ), NOT ISBLANK ( fact_orden[tramo_umbral_miles] ) ), "contexto", "tramo", "clave", FORMAT ( fact_orden[tramo_umbral_miles], "0" ), "medida", "Órdenes en el tramo", "valor", [Órdenes en el tramo] )
 )

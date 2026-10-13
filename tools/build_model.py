@@ -23,6 +23,10 @@ sys.path.insert(0, str(ROOT))
 from src import config  # noqa: E402
 
 NAME = "perucompras"
+CUTOFF_MONTH = config.END[1]                                    # último mes con datos (9 = setiembre)
+LAST_FULL_YEAR = config.END[0] if config.END[1] == 12 else config.END[0] - 1
+MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "setiembre",
+             "octubre", "noviembre", "diciembre"]
 MODEL = ROOT / "powerbi" / f"{NAME}.SemanticModel"
 NS = uuid.UUID("6f1c2a52-3b7e-4f1a-9c53-2c9a1b0e7d11")
 
@@ -48,6 +52,7 @@ TABLES = {
             ("mes", "int64", {"hidden": True}),
             ("mes_nombre", "string", {"sort_by": "mes"}),
             ("anio_mes", "string", {}),
+            ("mes_inicio", "dateTime", {"format": "mmm yyyy", "description": "Primer día del mes"}),
             ("dia_semana", "string", {"sort_by": "dia_semana_num"}),
             ("dia_semana_num", "int64", {"hidden": True}),
             ("es_fin_de_semana", "int64", {"hidden": True}),
@@ -113,6 +118,13 @@ TABLES = {
             ("atipico_alto", "int64", {"hidden": True}),
             ("atipico_bajo", "int64", {"hidden": True}),
             ("ordinaria_sobre_umbral", "int64", {"hidden": True}),
+            ("posible_fraccionamiento", "int64", {"hidden": True}),
+            ("tramo_umbral_miles", "int64", {
+                "expression": "IF (\n    fact_orden[gran_compra] = 0 && fact_orden[total] >= 80000 && fact_orden[total] < 120000,\n"
+                              "    INT ( fact_orden[total] / 1000 )\n)",
+                "description": "Compras ordinarias de S/ 80 000 a 119 999, en tramos de S/ 1 000 (80 = S/ 80 000–80 999). "
+                               "Sirve para ver el comportamiento alrededor del umbral de la Gran Compra.",
+                "format": "0"}),
         ],
     },
 }
@@ -148,8 +160,17 @@ MEASURES = [
      "CALCULATE ( [Monto], DATEADD ( dim_fecha[fecha], -1, YEAR ) )", "#,##0",
      "Monto de las mismas fechas un año antes. En 2026 compara enero–setiembre con enero–setiembre de 2025."),
     ("1. Compras", "Var. interanual",
-     "VAR antes = [Monto mismo periodo año anterior]\nRETURN\n    IF ( NOT ISBLANK ( antes ), DIVIDE ( [Monto] - antes, antes ) )",
-     "+0.0%;-0.0%;0.0%", "Variación del monto frente a las mismas fechas del año anterior."),
+     "VAR antes = [Monto mismo periodo año anterior]\nRETURN\n"
+     "    IF ( HASONEVALUE ( dim_fecha[anio] ) && NOT ISBLANK ( antes ), DIVIDE ( [Monto] - antes, antes ) )",
+     "+0.0%;-0.0%;0.0%",
+     "Variación del monto frente a las mismas fechas del año anterior. Solo con un año elegido: sobre varios años no tiene sentido."),
+    ("1. Compras", "Monto ene–set (S/ millones)",
+     f"CALCULATE ( [Monto (S/ millones)], dim_fecha[mes] <= {CUTOFF_MONTH} )", "#,##0.0",
+     f"Monto de enero a {MONTHS_ES[CUTOFF_MONTH - 1]} de cada año: compara los años completos con el último, "
+     "que llega hasta el corte."),
+    ("1. Compras", "Proveedores con ventas ene–set",
+     f"CALCULATE ( [Proveedores con ventas], dim_fecha[mes] <= {CUTOFF_MONTH} )", "#,##0",
+     f"Proveedores con al menos una orden entre enero y {MONTHS_ES[CUTOFF_MONTH - 1]}, para comparar años."),
     ("1. Compras", "Participación en el monto",
      "DIVIDE ( [Monto], CALCULATE ( [Monto], ALLSELECTED () ) )", "0.0%",
      "Parte del monto total de lo que está seleccionado."),
@@ -199,6 +220,13 @@ MEASURES = [
     ("4. Calendario", "Participación del mes en el año",
      "DIVIDE ( [Monto], CALCULATE ( [Monto], ALLEXCEPT ( dim_fecha, dim_fecha[anio] ) ) )", "0.0%",
      "Parte del monto del año que se compró en el mes. Solo tiene sentido en años completos (2022 a 2025)."),
+    ("4. Calendario", "Participación promedio del mes",
+     f"AVERAGEX (\n    FILTER ( VALUES ( dim_fecha[anio] ), dim_fecha[anio] <= {LAST_FULL_YEAR} ),\n"
+     "    [Participación del mes en el año]\n)",
+     "0.0%", f"Promedio, entre 2022 y {LAST_FULL_YEAR}, de la parte del monto anual que se compra en el mes."),
+    ("4. Calendario", "Participación del mes (años completos)",
+     f"IF ( MAX ( dim_fecha[anio] ) <= {LAST_FULL_YEAR}, [Participación del mes en el año] )", "0.0%",
+     f"Igual que Participación del mes en el año, pero en blanco para {LAST_FULL_YEAR + 1}, que aún no termina."),
     ("4. Calendario", "Participación del último trimestre",
      "DIVIDE (\n    CALCULATE ( [Monto], dim_fecha[trimestre] = \"T4\" ),\n    CALCULATE ( [Monto], ALLEXCEPT ( dim_fecha, dim_fecha[anio] ) )\n)",
      "0.0%", "Parte del monto del año comprada de octubre a diciembre. Solo años completos."),
@@ -219,6 +247,19 @@ MEASURES = [
     ("5. Gran Compra", "Monto ordinario sobre el umbral",
      "CALCULATE ( [Monto], fact_orden[ordinaria_sobre_umbral] = 1 )", "#,##0",
      "Monto de las compras ordinarias de S/ 100 000 o más."),
+    ("5. Gran Compra", "Monto ordinario sobre el umbral (S/ millones)",
+     "DIVIDE ( [Monto ordinario sobre el umbral], 1e6 )", "#,##0.0",
+     "Monto ordinario sobre el umbral, en millones de soles."),
+    ("5. Gran Compra", "Órdenes en posibles compras partidas",
+     "CALCULATE ( [Órdenes], fact_orden[posible_fraccionamiento] = 1 )", "#,##0",
+     "Compras ordinarias que, con otras de la misma entidad, proveedor, catálogo y día, superan juntas S/ 100 000 "
+     "aunque cada una esté por debajo. Es una señal para revisar, no una prueba de fraccionamiento."),
+    ("5. Gran Compra", "Monto en posibles compras partidas (S/ millones)",
+     "DIVIDE ( CALCULATE ( [Monto], fact_orden[posible_fraccionamiento] = 1 ), 1e6 )", "#,##0.0",
+     "Monto de las órdenes en posibles compras partidas, en millones de soles."),
+    ("5. Gran Compra", "Órdenes en el tramo",
+     "IF ( NOT ISBLANK ( SELECTEDVALUE ( fact_orden[tramo_umbral_miles] ) ), [Órdenes] )", "#,##0",
+     "Órdenes del tramo de S/ 1 000; en blanco fuera de los tramos, para que el histograma no muestre el resto de órdenes."),
     ("5. Gran Compra", "% ordinario sobre el umbral",
      "DIVIDE ( [Monto ordinario sobre el umbral], [Monto compra ordinaria] )", "0.0%",
      "Parte del monto de compra ordinaria que supera el umbral de la Gran Compra."),
@@ -270,7 +311,11 @@ def table_tmdl(name: str, spec: dict) -> str:
     for col, dtype, opts in spec["columns"]:
         if opts.get("description"):
             out.append(f"\t/// {opts['description']}")
-        out.append(f"\tcolumn {col}")
+        if opts.get("expression"):            # columna calculada en DAX
+            out.append(f"\tcolumn {col} =")
+            out.append(indent(opts["expression"], 3))
+        else:
+            out.append(f"\tcolumn {col}")
         out.append(f"\t\tdataType: {dtype}")
         if opts.get("key"):
             out.append("\t\tisKey")
@@ -280,13 +325,15 @@ def table_tmdl(name: str, spec: dict) -> str:
             out.append(f"\t\tformatString: {opts['format']}")
         out.append(f"\t\tlineageTag: {tag('column', name, col)}")
         out.append("\t\tsummarizeBy: none")
-        out.append(f"\t\tsourceColumn: {col}")
+        if not opts.get("expression"):
+            out.append(f"\t\tsourceColumn: {col}")
         if opts.get("sort_by"):
             out.append(f"\t\tsortByColumn: {opts['sort_by']}")
         out.append("")
         out.append("\t\tannotation SummarizationSetBy = Automatic")
         out.append("")
-        m_types.append(f'{{"{col}", {M_TYPES[dtype]}}}')
+        if not opts.get("expression"):
+            m_types.append(f'{{"{col}", {M_TYPES[dtype]}}}')
     m = (
         "let\n"
         f'    Origen = Csv.Document(File.Contents(RutaDatos & "{name}.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n'

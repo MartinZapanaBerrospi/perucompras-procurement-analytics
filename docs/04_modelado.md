@@ -5,12 +5,12 @@
 ## 1. Resumen
 
 El modelo de Power BI se guarda como **proyecto PBIP con TMDL**: el modelo, el Power Query y las
-37 medidas DAX están en archivos de texto que se leen en GitHub. No se armó a mano. Lo genera un
+45 medidas DAX están en archivos de texto que se leen en GitHub. No se armó a mano. Lo genera un
 script ([`tools/build_model.py`](../tools/build_model.py)), así que es reproducible y cualquier
 cambio queda en el historial.
 
-**Las 37 medidas se validaron contra Python.** En **296 comparaciones** (en total, por año y en
-cada uno de los 29 catálogos) la diferencia máxima es de 4,8 × 10⁻¹³, que es error de punto
+**Las medidas se validaron contra Python.** En **363 comparaciones** (en total, por año, por
+mes, por tramo de monto y en cada uno de los 29 catálogos) la diferencia máxima es de 4,9 × 10⁻¹³, que es error de punto
 flotante. Las medidas de texto (proveedor líder, nivel de concentración, fecha de corte) también
 coinciden.
 
@@ -51,7 +51,7 @@ de Python. Cero órdenes sin fecha, entidad, proveedor, catálogo o estado.
 
 ## 3. Medidas
 
-Las 37 medidas viven en la tabla `_Medidas`, en carpetas por pregunta. Cada una tiene una
+Las 45 medidas viven en la tabla `_Medidas`, en carpetas por pregunta. Cada una tiene una
 descripción, que Power BI muestra al pasar el mouse.
 
 ### 1. Compras (P1)
@@ -66,8 +66,9 @@ descripción, que Power BI muestra al pasar el mouse.
 | Entidades compradoras · Proveedores con ventas | RUC distintos con al menos una orden |
 | Monto compra efectiva | Monto sin órdenes nulas ni resueltas |
 | Monto mismo periodo año anterior | `DATEADD(fecha, −1, YEAR)` |
-| Var. interanual | (Monto − año anterior) / año anterior |
+| Var. interanual | (Monto − año anterior) / año anterior; en blanco salvo que haya un solo año elegido |
 | Participación en el monto | Monto / monto de todo lo seleccionado |
+| Monto ene–set (S/ millones) · Proveedores con ventas ene–set | Lo mismo, solo de enero a setiembre de cada año, para comparar con 2026 |
 
 **Comparación justa con 2026.** El calendario termina el 30 de setiembre de 2026. Por eso
 `DATEADD` compara enero–setiembre de 2026 con enero–setiembre de 2025, y no con todo 2025. Con
@@ -103,6 +104,8 @@ siempre por catálogo.
 | Medida | Definición |
 |---|---|
 | Participación del mes en el año | Monto del mes / monto del año |
+| Participación promedio del mes | Promedio de la anterior entre 2022 y 2025 |
+| Participación del mes (años completos) | La misma, en blanco para 2026, que aún no termina |
 | Participación del último trimestre | Monto de octubre a diciembre / monto del año |
 | Participación de diciembre | Monto de diciembre / monto del año |
 
@@ -117,6 +120,8 @@ de octubre a diciembre.
 | % Gran Compra | Monto Gran Compra / Monto |
 | Órdenes ordinarias sobre el umbral · Monto ordinario sobre el umbral | Compras ordinarias de S/ 100 000 o más |
 | % ordinario sobre el umbral | Monto ordinario sobre el umbral / monto de compra ordinaria |
+| Órdenes en posibles compras partidas · su monto | Órdenes marcadas con `posible_fraccionamiento` |
+| Órdenes en el tramo | Órdenes del tramo de S/ 1 000 (columna calculada `tramo_umbral_miles`, de S/ 80 000 a 119 999), para el histograma |
 
 ### 6. Calidad de datos y 7. Textos
 
@@ -135,10 +140,12 @@ Desktop con el MCP de modelado. El resultado de Power BI queda en
 
 | Contexto | Medidas | Comparaciones | Fallan |
 |---|---|---|---|
-| Total | 24 | 24 | 0 |
-| Cada año (2022–2026) | 8 | 40 | 0 |
+| Total | 29 | 29 | 0 |
+| Cada año (2022–2026) | 10 | 50 | 0 |
 | Cada catálogo (29) | 8 | 232 | 0 |
-| **Total** | | **296** | **0** |
+| Cada mes (12) | 1 | 12 | 0 |
+| Cada tramo de S/ 1 000 (40) | 1 | 40 | 0 |
+| **Total** | | **363** | **0** |
 
 **Cómo se trata el "en blanco".** En DAX, una suma sin filas devuelve *en blanco*; en pandas, 0.
 Por ejemplo, un catálogo sin compras ordinarias sobre el umbral. La comparación los considera
