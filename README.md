@@ -11,6 +11,8 @@ enero de 2022 a setiembre de 2026: S/ 8 519 millones en 511 782 órdenes de comp
 hizo de punta a punta con **datos abiertos reales** de Perú Compras, desde 57 archivos mensuales
 hasta un tablero de Power BI para gerencia.
 
+**[Ver el tablero en Power BI →](https://app.powerbi.com/view?r=eyJrIjoiZjYzMGVmYjAtNWMwNS00Y2RkLTliM2UtZjk5ZmJkNmRmMWYzIiwidCI6IjFlYmE0NDNmLTIzZTUtNDUzNC05MGQxLTA5NzZhYWJlODZhYyIsImMiOjR9)**
+
 ![Página 1 del tablero: resumen ejecutivo de las compras por Catálogos Electrónicos](docs/img/01_resumen.png)
 
 ## La pregunta
@@ -61,7 +63,8 @@ año.
 
 ## El tablero
 
-> El enlace público al tablero se agrega al publicarlo en Power BI (Fase 9).
+**[Abrir el tablero publicado en Power BI](https://app.powerbi.com/view?r=eyJrIjoiZjYzMGVmYjAtNWMwNS00Y2RkLTliM2UtZjk5ZmJkNmRmMWYzIiwidCI6IjFlYmE0NDNmLTIzZTUtNDUzNC05MGQxLTA5NzZhYWJlODZhYyIsImMiOjR9)**: se navega en el navegador, sin instalar
+nada. Las 7 páginas:
 
 | | |
 |---|---|
@@ -100,6 +103,7 @@ Cada fase tiene su documento, con lo que se hizo, lo que se encontró y lo que s
 | 6. Tablero | 7 páginas y 56 visuales generados por script, revisados página por página | [powerbi/README.md](powerbi/README.md) |
 | 7. Hallazgos | Conclusiones de arriba | este README |
 | 8. Automatización | 65 pruebas y validación contra cifras oficiales en GitHub Actions | [.github/workflows/ci.yml](.github/workflows/ci.yml) |
+| 9. Publicación | Tablero publicado en la web de Power BI y enlazado en el portafolio | [enlace](https://app.powerbi.com/view?r=eyJrIjoiZjYzMGVmYjAtNWMwNS00Y2RkLTliM2UtZjk5ZmJkNmRmMWYzIiwidCI6IjFlYmE0NDNmLTIzZTUtNDUzNC05MGQxLTA5NzZhYWJlODZhYyIsImMiOjR9) |
 
 **Lo que valida el resultado:**
 - **Contra las cifras oficiales.** El monto de bienes coincide con los boletines e Infocifras de
