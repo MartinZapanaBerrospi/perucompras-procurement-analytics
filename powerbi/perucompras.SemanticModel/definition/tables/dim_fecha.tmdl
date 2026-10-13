@@ -1,0 +1,97 @@
+/// Calendario de 2022-01-01 a 2026-09-30, en español.
+table dim_fecha
+	lineageTag: ed772073-3448-51db-87ea-bd18f410bafd
+	dataCategory: Time
+
+	column fecha
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: 221d2a47-efab-553a-99ee-deffc0669b67
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Año
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: 1587d14b-7b18-5f85-b2dc-6eaa32a4c84e
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre
+		dataType: string
+		lineageTag: 72b46ba0-9a8c-55b9-8b93-12025973c7df
+		summarizeBy: none
+		sourceColumn: trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		isHidden
+		lineageTag: 2420ce9b-0a81-5f6b-8ebb-4c8c727cd537
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_nombre
+		dataType: string
+		lineageTag: 25b9f143-f906-507d-b0c7-e720773d2ba7
+		summarizeBy: none
+		sourceColumn: mes_nombre
+		sortByColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio_mes
+		dataType: string
+		lineageTag: 091f5926-faa1-5ede-905a-3cddd05351d4
+		summarizeBy: none
+		sourceColumn: anio_mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana
+		dataType: string
+		lineageTag: 2cfb3b0b-ba13-5617-9c81-5e09089af305
+		summarizeBy: none
+		sourceColumn: dia_semana
+		sortByColumn: dia_semana_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana_num
+		dataType: int64
+		isHidden
+		lineageTag: 470e52b9-a207-5785-a5ec-1e07bb1993e3
+		summarizeBy: none
+		sourceColumn: dia_semana_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column es_fin_de_semana
+		dataType: int64
+		isHidden
+		lineageTag: 72ec3c0b-8ef9-55f5-b6f4-1b22b1e340b4
+		summarizeBy: none
+		sourceColumn: es_fin_de_semana
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_fecha = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_fecha.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"fecha", type date}, {"anio", Int64.Type}, {"trimestre", type text}, {"mes", Int64.Type}, {"mes_nombre", type text}, {"anio_mes", type text}, {"dia_semana", type text}, {"dia_semana_num", Int64.Type}, {"es_fin_de_semana", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

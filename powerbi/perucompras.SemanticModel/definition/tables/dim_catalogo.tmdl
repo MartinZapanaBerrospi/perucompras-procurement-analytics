@@ -1,0 +1,66 @@
+/// Catálogo electrónico estable (29) y su rubro (10). Ver data/reference/catalogos.csv.
+table dim_catalogo
+	lineageTag: 9400256f-d881-5ca9-8245-d5506768443d
+
+	column catalogo_id
+		dataType: int64
+		isKey
+		isHidden
+		lineageTag: 8b554888-8e21-53b4-b22a-984d96a78c57
+		summarizeBy: none
+		sourceColumn: catalogo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column catalogo
+		dataType: string
+		lineageTag: 5719be7e-aa5b-5ddf-8d0b-cb346c31955d
+		summarizeBy: none
+		sourceColumn: catalogo
+
+		annotation SummarizationSetBy = Automatic
+
+	column rubro
+		dataType: string
+		lineageTag: 59940e6f-bd46-5190-9a11-d43ae5f09fa7
+		summarizeBy: none
+		sourceColumn: rubro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vigente_desde
+		dataType: string
+		lineageTag: 658ee71c-50d3-5ff9-8fe3-cb8dc53562a0
+		summarizeBy: none
+		sourceColumn: vigente_desde
+
+		annotation SummarizationSetBy = Automatic
+
+	column vigente_hasta
+		dataType: string
+		lineageTag: c5e8de9f-bba6-5912-8c51-6a3643b44689
+		summarizeBy: none
+		sourceColumn: vigente_hasta
+
+		annotation SummarizationSetBy = Automatic
+
+	column con_compras_al_corte
+		dataType: int64
+		isHidden
+		lineageTag: 82708d6e-8189-550f-9651-26310b7b8eba
+		summarizeBy: none
+		sourceColumn: con_compras_al_corte
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_catalogo = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_catalogo.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"catalogo_id", Int64.Type}, {"catalogo", type text}, {"rubro", type text}, {"vigente_desde", type text}, {"vigente_hasta", type text}, {"con_compras_al_corte", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

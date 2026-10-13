@@ -1,0 +1,20 @@
+relationship 6bfc67c5-2c4e-58d7-8331-70f19617aa49
+	fromColumn: fact_orden.fecha
+	toColumn: dim_fecha.fecha
+
+relationship fb42f1c0-de04-5b2a-b036-67a8900bf725
+	fromColumn: fact_orden.ruc_entidad
+	toColumn: dim_entidad.ruc_entidad
+
+relationship 3b61d1a5-69a4-56af-beea-d21cb3b26827
+	fromColumn: fact_orden.ruc_proveedor
+	toColumn: dim_proveedor.ruc_proveedor
+
+relationship e6292ec9-7184-56ef-a8d1-da584e771058
+	fromColumn: fact_orden.catalogo_id
+	toColumn: dim_catalogo.catalogo_id
+
+relationship 9eaa9823-2645-5485-a54c-b917648614ca
+	fromColumn: fact_orden.estado_id
+	toColumn: dim_estado.estado_id
+

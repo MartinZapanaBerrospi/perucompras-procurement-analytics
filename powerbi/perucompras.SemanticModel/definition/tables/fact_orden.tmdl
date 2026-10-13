@@ -1,0 +1,144 @@
+/// Una fila por orden de compra de bienes formalizada (2022-01 a 2026-09).
+table fact_orden
+	lineageTag: 3ab6db5a-3a9a-52d5-9fa6-6e3cc903f513
+
+	column orden
+		dataType: string
+		isKey
+		lineageTag: 7e49ca83-4442-53fe-89f4-86e4952bd1b7
+		summarizeBy: none
+		sourceColumn: orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: 5d0f383b-b4f0-5b93-bed4-826549143f07
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column ruc_entidad
+		dataType: string
+		isHidden
+		lineageTag: 695c590f-6fab-5f28-8e67-d5d931a0d5c0
+		summarizeBy: none
+		sourceColumn: ruc_entidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column ruc_proveedor
+		dataType: string
+		isHidden
+		lineageTag: 4f09b06c-cc4b-5b3b-aa49-108d9bb355b8
+		summarizeBy: none
+		sourceColumn: ruc_proveedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column catalogo_id
+		dataType: int64
+		isHidden
+		lineageTag: 3911b260-cd2f-509f-be06-8db607fe64c3
+		summarizeBy: none
+		sourceColumn: catalogo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado_id
+		dataType: string
+		isHidden
+		lineageTag: 9ed5524d-e55b-543c-9e6b-45a7e4972fe3
+		summarizeBy: none
+		sourceColumn: estado_id
+
+		annotation SummarizationSetBy = Automatic
+
+	/// 1 = Gran Compra; 0 = Compra ordinaria
+	column gran_compra
+		dataType: int64
+		lineageTag: fb51adf4-8f1b-59f9-a930-b0d1fd72aea0
+		summarizeBy: none
+		sourceColumn: gran_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column igv
+		dataType: double
+		isHidden
+		formatString: #,##0.00
+		lineageTag: 6116db86-2fe7-57f2-81fa-a5066af18363
+		summarizeBy: none
+		sourceColumn: igv
+
+		annotation SummarizationSetBy = Automatic
+
+	column total
+		dataType: double
+		isHidden
+		formatString: #,##0.00
+		lineageTag: 95e658ff-0896-51c9-9bee-1c08ab73fd35
+		summarizeBy: none
+		sourceColumn: total
+
+		annotation SummarizationSetBy = Automatic
+
+	column igv_exonerado
+		dataType: int64
+		isHidden
+		lineageTag: 41c22f99-8a9a-537b-8bd4-39c62e9fa149
+		summarizeBy: none
+		sourceColumn: igv_exonerado
+
+		annotation SummarizationSetBy = Automatic
+
+	column igv_parcial
+		dataType: int64
+		isHidden
+		lineageTag: 4b69af79-e47a-5655-a14b-22644c51eb3e
+		summarizeBy: none
+		sourceColumn: igv_parcial
+
+		annotation SummarizationSetBy = Automatic
+
+	column atipico_alto
+		dataType: int64
+		isHidden
+		lineageTag: 26f29c48-e011-57e2-9d1c-707b914a88d6
+		summarizeBy: none
+		sourceColumn: atipico_alto
+
+		annotation SummarizationSetBy = Automatic
+
+	column atipico_bajo
+		dataType: int64
+		isHidden
+		lineageTag: ae35878b-a970-5adb-9802-fd13f7ae1344
+		summarizeBy: none
+		sourceColumn: atipico_bajo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordinaria_sobre_umbral
+		dataType: int64
+		isHidden
+		lineageTag: dd3fdd72-dfa5-516c-a7bc-7c4b316a3ed8
+		summarizeBy: none
+		sourceColumn: ordinaria_sobre_umbral
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_orden = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "fact_orden.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"orden", type text}, {"fecha", type date}, {"ruc_entidad", type text}, {"ruc_proveedor", type text}, {"catalogo_id", Int64.Type}, {"estado_id", type text}, {"gran_compra", Int64.Type}, {"igv", type number}, {"total", type number}, {"igv_exonerado", Int64.Type}, {"igv_parcial", Int64.Type}, {"atipico_alto", Int64.Type}, {"atipico_bajo", Int64.Type}, {"ordinaria_sobre_umbral", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

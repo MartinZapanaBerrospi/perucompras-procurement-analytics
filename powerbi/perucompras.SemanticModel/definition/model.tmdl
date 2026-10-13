@@ -1,0 +1,23 @@
+model Model
+	culture: es-PE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["RutaDatos", "dim_fecha", "dim_entidad", "dim_proveedor", "dim_catalogo", "dim_estado", "fact_orden"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_fecha
+ref table dim_entidad
+ref table dim_proveedor
+ref table dim_catalogo
+ref table dim_estado
+ref table fact_orden
+ref table _Medidas
+
