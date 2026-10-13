@@ -12,6 +12,18 @@ CURATED = DATA / "curated"
 REFERENCE = DATA / "reference"
 MANIFEST = RAW / "manifest.csv"
 PORTAL_INVENTORY = REFERENCE / "inventario_portal.csv"
+CATALOGS = REFERENCE / "catalogos.csv"
+OFFICIAL = REFERENCE / "cifras_oficiales.csv"
+REPORTS = ROOT / "reports"
+QUALITY = REPORTS / "calidad"
+
+# Reglas de negocio y tolerancias
+IGV_RATE = 0.18
+GRAN_COMPRA_THRESHOLD = 100_000        # S/; Directiva N.° 006-2021-PERÚ COMPRAS
+OFFICIAL_TOLERANCE = 0.01              # diferencia relativa máxima contra la cifra oficial
+OUTLIER_IQR_FACTOR = 3                 # atípicos: fuera de Q1 − 3·RIC y Q3 + 3·RIC, en log10(monto)
+VALID_STATES = {"ACEPTADA", "ACEPTADA C/ENTREGA PENDIENTE", "PAGADA", "RESUELTA", "ORDEN DE COMPRA NULA"}
+VALID_PROCEDURES = {"Compra ordinaria", "Gran Compra"}
 
 # Periodo de análisis (inclusive). Perú Compras publica cada mes alrededor del día 1 del siguiente.
 START = (2022, 1)

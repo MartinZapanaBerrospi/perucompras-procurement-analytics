@@ -1,0 +1,60 @@
+id,dimension,regla,severidad,evaluadas,fallan,pct_fallan,monto_afectado,resultado,detalle
+C1,Completitud,Los 57 meses del periodo están presentes,bloqueante,57,0,0.0,,cumple,
+C2,Completitud,Los 57 archivos traen las 19 columnas del diccionario,bloqueante,57,0,0.0,,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: ruc_proveedor,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: proveedor,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: ruc_entidad,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: entidad,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: tipo_procedimiento,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: orden,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: estado,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: fecha_formalizacion,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: total,bloqueante,511782,0,0.0,0.0,cumple,
+C3,Completitud,Campo obligatorio sin vacíos: acuerdo_marco,bloqueante,511782,0,0.0,0.0,cumple,
+C4,Completitud,Columna con contenido: descripcion_cesion_derechos,info,511782,511782,100.0,8518530614.92,info,Columna mayormente vacía: se documenta y no se usa en el análisis
+C4,Completitud,Columna con contenido: url_documento_estado,info,511782,508640,99.386,8486195537.1,info,Columna mayormente vacía: se documenta y no se usa en el análisis
+C4,Completitud,Columna con contenido: descripcion_estado,info,511782,417339,81.546,7584292869.74,info,Columna mayormente vacía: se documenta y no se usa en el análisis
+U1,Unicidad,Cada código de orden aparece una sola vez en los 57 meses,bloqueante,511782,0,0.0,0.0,cumple,
+U2,Unicidad,No hay filas idénticas,bloqueante,511782,0,0.0,0.0,cumple,
+V1,Validez,RUC del proveedor: 11 dígitos y dígito verificador correcto,bloqueante,511782,0,0.0,0.0,cumple,
+V2,Validez,RUC de la entidad: 11 dígitos y dígito verificador correcto,bloqueante,511782,0,0.0,0.0,cumple,
+V3,Validez,RUC de la entidad es de persona jurídica (empieza con 20),alerta,511782,0,0.0,0.0,cumple,
+V4,Validez,Fecha interpretable: fecha_proceso,bloqueante,511782,0,0.0,0.0,cumple,
+V4,Validez,Fecha interpretable: fecha_formalizacion,bloqueante,511782,0,0.0,0.0,cumple,
+V4,Validez,Fecha interpretable: fecha_ultimo_estado,bloqueante,511782,0,0.0,0.0,cumple,
+V5,Validez,Monto numérico: sub_total,bloqueante,511782,0,0.0,0.0,cumple,
+V5,Validez,Monto numérico: igv,bloqueante,511782,0,0.0,0.0,cumple,
+V5,Validez,Monto numérico: total,bloqueante,511782,0,0.0,0.0,cumple,
+V6,Validez,Total y subtotal mayores que cero; IGV no negativo,bloqueante,511782,0,0.0,0.0,cumple,
+V7,Validez,"Tipo de procedimiento dentro del dominio (Compra ordinaria, Gran Compra)",bloqueante,511782,0,0.0,0.0,cumple,
+V8,Validez,Estado dentro del dominio de 5 estados conocidos,bloqueante,511782,0,0.0,0.0,cumple,
+V9,Validez,Código de orden con el patrón OCAM-AAAA-N-N-N,alerta,511782,0,0.0,0.0,cumple,
+V10,Validez,Acuerdo marco asignado a un catálogo estable,bloqueante,511782,0,0.0,0.0,cumple,
+K1,Consistencia,"TOTAL = SUB_TOTAL + IGV (±S/ 0,01)",bloqueante,511782,0,0.0,0.0,cumple,
+K2,Consistencia,IGV en cero (orden exonerada),info,511782,19217,3.755,243383347.23,info,Se concentra en entidades de la Amazonía (Ley 27037); no es un error
+K3,Consistencia,"IGV igual al 18 % del subtotal (±0,5 pp), sin contar las exoneradas",alerta,511782,394,0.077,7155454.79,alerta,Órdenes con parte de los bienes exonerados
+K4,Consistencia,Fecha de formalización dentro del mes del archivo,bloqueante,511782,0,0.0,0.0,cumple,
+K5,Consistencia,Último estado no anterior a la formalización ni posterior al corte,bloqueante,511782,0,0.0,0.0,cumple,
+K6,Consistencia,Cada RUC de proveedor tiene un solo nombre,alerta,511782,9169,1.792,392038108.22,alerta,23 RUC con más de un nombre; se usa el nombre más reciente
+K6,Consistencia,Cada RUC de entidad tiene un solo nombre,alerta,511782,290307,56.725,4614567844.44,alerta,928 RUC con más de un nombre; se usa el nombre más reciente
+K7,Consistencia,Cada nombre de entidad corresponde a un solo RUC,alerta,511782,7262,1.419,82057175.65,alerta,"30 nombres compartidos por entidades distintas; la identidad es el RUC, nunca el nombre"
+K8,Consistencia,Compra ordinaria por debajo del umbral de Gran Compra (S/ 100 000),alerta,511782,785,0.153,121385236.21,alerta,La Gran Compra es obligatoria desde S/ 100 000; puede haber excepciones que los datos no muestran
+K9,Consistencia,Las órdenes pagadas fueron actualizadas por el SIAF,info,97250,2822,2.902,26239696.81,info,El resto se marcó pagada sin la nota automática del SIAF
+E1,Exactitud,bienes 2022: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,994,660,000.00; calculado 1,994,648,778.35; diferencia -0.001 %"
+E1,Exactitud,gran_compra 2022: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,152,530,000.00; calculado 1,152,530,685.58; diferencia 0.0 %"
+E1,Exactitud,compra_ordinaria 2022: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 842,130,000.00; calculado 842,118,092.77; diferencia -0.001 %"
+E1,Exactitud,bienes 2023: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,885,994,048.23; calculado 1,885,319,292.87; diferencia -0.036 %"
+E2,Exactitud,bienes 2023: ordenes igual a la cifra oficial (±1 %),alerta,1,0,0.0,,cumple,"oficial 116,697.00; calculado 116,625.00; diferencia -0.062 %"
+E1,Exactitud,gran_compra 2023: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,026,431,817.00; calculado 1,026,371,637.30; diferencia -0.006 %"
+E2,Exactitud,gran_compra 2023: ordenes igual a la cifra oficial (±1 %),alerta,1,0,0.0,,cumple,"oficial 8,747.00; calculado 8,746.00; diferencia -0.011 %"
+E1,Exactitud,compra_ordinaria 2023: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 859,562,231.23; calculado 858,947,655.57; diferencia -0.071 %"
+E2,Exactitud,compra_ordinaria 2023: ordenes igual a la cifra oficial (±1 %),alerta,1,0,0.0,,cumple,"oficial 107,950.00; calculado 107,879.00; diferencia -0.066 %"
+E1,Exactitud,bienes 2024: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,939,340,000.00; calculado 1,934,563,063.65; diferencia -0.246 %"
+E1,Exactitud,gran_compra 2024: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,172,990,000.00; calculado 1,170,357,285.40; diferencia -0.224 %"
+E1,Exactitud,compra_ordinaria 2024: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 766,350,000.00; calculado 764,205,778.25; diferencia -0.28 %"
+E1,Exactitud,bienes 2025: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,792,440,000.00; calculado 1,778,887,274.56; diferencia -0.756 %"
+E1,Exactitud,gran_compra 2025: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 1,113,170,000.00; calculado 1,105,555,918.23; diferencia -0.684 %"
+E1,Exactitud,compra_ordinaria 2025: monto_soles igual a la cifra oficial (±1 %),bloqueante,1,0,0.0,,cumple,"oficial 679,270,000.00; calculado 673,331,356.33; diferencia -0.874 %"
+O1,Oportunidad,El estado de las órdenes se fotografía a más tardar 3 días después del cierre,alerta,57,6,10.526,,alerta,"Meses con corte tardío: 2022-01, 2022-02, 2022-03, 2022-04, 2023-03, 2023-06"
+O2,Oportunidad,El archivo se publica a más tardar 7 días después del cierre del mes,alerta,57,45,78.947,,alerta,Fecha de la última modificación en el portal; los lotes de 2024 reemplazaron archivos previos
+O3,Oportunidad,El porcentaje de órdenes pagadas al corte no cae a menos de un tercio de la mediana,alerta,51,10,19.608,,alerta,"Mediana 14.8 %; meses afectados: 2023-01, 2024-01, 2024-11, 2024-12, 2025-01, 2025-02, 2025-03, 2025-04, 2025-05, 2026-01"

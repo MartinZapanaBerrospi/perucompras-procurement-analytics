@@ -1,0 +1,20 @@
+columna_origen,columna,tipo,vacios,pct_vacios,distintos_origen,distintos_limpio,con_espacios_extremos,minimo,maximo,longitud_min,longitud_max,valores_frecuentes
+FECHA_PROCESO,fecha_proceso,fecha,0,0.0,122,122,0,2022-05-12 12:51:18,2026-10-01 08:00:21,15,19,
+RUC_PROVEEDOR,ruc_proveedor,texto,0,0.0,4850,3569,10132,,,11,11,20107903951 (3899) | 20604554676 (3736) | 20611043873 (3603)
+PROVEEDOR,proveedor,texto,0,0.0,4877,3592,12539,,,10,100,TRADING SERVICE M&A SRLTDA (3899) | DELTA UTIL E.I.R.L. (3736) | GRUPO ECOLIMP E.I.R.L (3603)
+RUC_ENTIDAD,ruc_entidad,texto,0,0.0,3378,2348,10132,,,11,11,20153408191 (9062) | 20131257750 (7716) | 20131369124 (7071)
+ENTIDAD,entidad,texto,0,0.0,4280,3242,10391,,,8,116,MARINA DE GUERRA DEL PERU (9062) | SEGURO SOCIAL DE SALUD (7716) | EJERCITO PERUANO (7071)
+TIPO_PROCEDIMIENTO,tipo_procedimiento,texto,0,0.0,4,2,10132,,,11,16,Compra ordinaria (475630) | Gran Compra (36152)
+ORDEN_ELECTRÓNICA,orden,texto,0,0.0,511782,511782,10132,,,15,23,OCAM-2021-99-55-0 (1) | OCAM-2021-99-57-0 (1) | OCAM-2021-106-327-0 (1)
+ORDEN_ELECTRÓNICA_GENERADA,url_orden,texto,0,0.0,511782,511782,10132,,,110,110,https://apps1.perucompras.gob.pe//OrdenCompra/obtenerPdfOrde (1) | https://apps1.perucompras.gob.pe//OrdenCompra/obtenerPdfOrde (1) | https://apps1.perucompras.gob.pe//OrdenCompra/obtenerPdfOrde (1)
+ESTADO_ORDEN_ELECTRÓNICA,estado,texto,0,0.0,7,5,10132,,,6,28,ACEPTADA (414190) | PAGADA (97250) | RESUELTA (328)
+DOCUMENTO_ESTADO_OCAM,url_documento_estado,texto,508640,99.39,3144,3142,10132,,,0,104, (508640) | https://saeusceprod01.blob.core.windows.net/contentidad/uplo (1) | https://saeusceprod01.blob.core.windows.net/contentidad/uplo (1)
+FECHA_FORMALIZACIÓN,fecha_formalizacion,fecha,0,0.0,80585,80585,10132,2022-01-04 00:00:00,2026-09-30 22:01:20,15,19,
+FECHA_ÚLTIMO_ESTADO,fecha_ultimo_estado,fecha,0,0.0,128226,128226,10132,2022-01-04 00:07:35,2026-10-01 00:12:23,15,19,
+SUB_TOTAL,sub_total,monto,0,0.0,270909,263349,10132,0.04,37779917.52,1,11,
+IGV,igv,monto,0,0.0,189183,182154,10132,0.0,6800385.15,1,10,
+TOTAL,total,monto,0,0.0,279092,273365,10132,0.05,44580302.67,2,11,
+ORDEN_DIGITALIZADA,url_orden_digitalizada,texto,0,0.0,511782,511782,10132,,,88,114,https://saeusceprod01.blob.core.windows.net/contentidad/uplo (1) | https://saeusceprod01.blob.core.windows.net/contentidad/uplo (1) | https://saeusceprod01.blob.core.windows.net/contentidad/uplo (1)
+DESCRIPCIÓN_ESTADO,descripcion_estado,texto,417339,81.55,8,5,10132,,,0,80, (417339) | Actualizado automáticamente por la vinculación con el SIAF (94428) | i. Por haberse perfeccionado en contravención con el artícul (8)
+DESCRIPCIÓN_CESIÓN_DERECHOS,descripcion_cesion_derechos,texto,511782,100.0,2,0,10132,,,0,0, (511782)
+ACUERDO_MARCO,acuerdo_marco,texto,0,0.0,95,72,15702,,,7,95,"EXT-CE-2021-7 ÚTILES DE ESCRITORIO, PAPELES Y CARTONES (86052) | EXT-CE-2021-6 IMPRESORAS, CONSUMIBLES, REPUESTOS Y ACCESORIO (83722) | IMPRESORAS, CONSUMIBLES, REPUESTOS Y ACCESORIOS DE OFICINA (62139)"
