@@ -55,14 +55,26 @@ table _Medidas
 		displayFolder: 1. Compras
 		lineageTag: b1049b92-8dcc-51fc-849c-d83f28b1a62a
 
-	/// Variación del monto frente a las mismas fechas del año anterior.
+	/// Variación del monto frente a las mismas fechas del año anterior. Solo con un año elegido: sobre varios años no tiene sentido.
 	measure 'Var. interanual' =
 			VAR antes = [Monto mismo periodo año anterior]
 			RETURN
-			    IF ( NOT ISBLANK ( antes ), DIVIDE ( [Monto] - antes, antes ) )
+			    IF ( HASONEVALUE ( dim_fecha[anio] ) && NOT ISBLANK ( antes ), DIVIDE ( [Monto] - antes, antes ) )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 1. Compras
 		lineageTag: 51113a94-e664-52c4-940e-8aff10e3bbf0
+
+	/// Monto de enero a setiembre de cada año: compara los años completos con el último, que llega hasta el corte.
+	measure 'Monto ene–set (S/ millones)' = CALCULATE ( [Monto (S/ millones)], dim_fecha[mes] <= 9 )
+		formatString: #,##0.0
+		displayFolder: 1. Compras
+		lineageTag: f81e6e88-133e-567b-ad43-e11eb597bc0e
+
+	/// Proveedores con al menos una orden entre enero y setiembre, para comparar años.
+	measure 'Proveedores con ventas ene–set' = CALCULATE ( [Proveedores con ventas], dim_fecha[mes] <= 9 )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: d467a9b9-89a9-54d9-9771-8a10d7156557
 
 	/// Parte del monto total de lo que está seleccionado.
 	measure 'Participación en el monto' = DIVIDE ( [Monto], CALCULATE ( [Monto], ALLSELECTED () ) )
@@ -171,6 +183,22 @@ table _Medidas
 		displayFolder: 4. Calendario
 		lineageTag: dfeda7cf-3a42-5ba9-99a3-e8d808295d3a
 
+	/// Promedio, entre 2022 y 2025, de la parte del monto anual que se compra en el mes.
+	measure 'Participación promedio del mes' =
+			AVERAGEX (
+			    FILTER ( VALUES ( dim_fecha[anio] ), dim_fecha[anio] <= 2025 ),
+			    [Participación del mes en el año]
+			)
+		formatString: 0.0%
+		displayFolder: 4. Calendario
+		lineageTag: 146baa62-ed2e-5aca-90de-1b60c0b8deb6
+
+	/// Igual que Participación del mes en el año, pero en blanco para 2026, que aún no termina.
+	measure 'Participación del mes (años completos)' = IF ( MAX ( dim_fecha[anio] ) <= 2025, [Participación del mes en el año] )
+		formatString: 0.0%
+		displayFolder: 4. Calendario
+		lineageTag: 11067c8c-fc93-53ed-97a5-e3735e914098
+
 	/// Parte del monto del año comprada de octubre a diciembre. Solo años completos.
 	measure 'Participación del último trimestre' =
 			DIVIDE (
@@ -220,6 +248,30 @@ table _Medidas
 		formatString: #,##0
 		displayFolder: 5. Gran Compra
 		lineageTag: a8e5be45-a32e-5e5a-9702-423c1e210118
+
+	/// Monto ordinario sobre el umbral, en millones de soles.
+	measure 'Monto ordinario sobre el umbral (S/ millones)' = DIVIDE ( [Monto ordinario sobre el umbral], 1e6 )
+		formatString: #,##0.0
+		displayFolder: 5. Gran Compra
+		lineageTag: 22cad7eb-8114-56ce-aaa2-2758e05f7bf3
+
+	/// Compras ordinarias que, con otras de la misma entidad, proveedor, catálogo y día, superan juntas S/ 100 000 aunque cada una esté por debajo. Es una señal para revisar, no una prueba de fraccionamiento.
+	measure 'Órdenes en posibles compras partidas' = CALCULATE ( [Órdenes], fact_orden[posible_fraccionamiento] = 1 )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: ed2eb447-486d-56c4-af5e-49e8837b9717
+
+	/// Monto de las órdenes en posibles compras partidas, en millones de soles.
+	measure 'Monto en posibles compras partidas (S/ millones)' = DIVIDE ( CALCULATE ( [Monto], fact_orden[posible_fraccionamiento] = 1 ), 1e6 )
+		formatString: #,##0.0
+		displayFolder: 5. Gran Compra
+		lineageTag: a1c4d70e-17e4-5fa0-a0be-c7fb291534be
+
+	/// Órdenes del tramo de S/ 1 000; en blanco fuera de los tramos, para que el histograma no muestre el resto de órdenes.
+	measure 'Órdenes en el tramo' = IF ( NOT ISBLANK ( SELECTEDVALUE ( fact_orden[tramo_umbral_miles] ) ), [Órdenes] )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: 059a6d05-1825-5a0d-b86c-8d7a3610ead9
 
 	/// Parte del monto de compra ordinaria que supera el umbral de la Gran Compra.
 	measure '% ordinario sobre el umbral' = DIVIDE ( [Monto ordinario sobre el umbral], [Monto compra ordinaria] )

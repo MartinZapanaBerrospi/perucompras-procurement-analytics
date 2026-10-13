@@ -57,6 +57,16 @@ table dim_fecha
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Primer día del mes
+	column mes_inicio
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: e2f292d0-27e9-53d7-90a2-48f892bd0da4
+		summarizeBy: none
+		sourceColumn: mes_inicio
+
+		annotation SummarizationSetBy = Automatic
+
 	column dia_semana
 		dataType: string
 		lineageTag: 2cfb3b0b-ba13-5617-9c81-5e09089af305
@@ -90,7 +100,7 @@ table dim_fecha
 				let
 				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_fecha.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
-				    Tipos = Table.TransformColumnTypes(Encabezados, {{"fecha", type date}, {"anio", Int64.Type}, {"trimestre", type text}, {"mes", Int64.Type}, {"mes_nombre", type text}, {"anio_mes", type text}, {"dia_semana", type text}, {"dia_semana_num", Int64.Type}, {"es_fin_de_semana", Int64.Type}}, "en-US")
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"fecha", type date}, {"anio", Int64.Type}, {"trimestre", type text}, {"mes", Int64.Type}, {"mes_nombre", type text}, {"anio_mes", type text}, {"mes_inicio", type date}, {"dia_semana", type text}, {"dia_semana_num", Int64.Type}, {"es_fin_de_semana", Int64.Type}}, "en-US")
 				in
 				    Tipos
 

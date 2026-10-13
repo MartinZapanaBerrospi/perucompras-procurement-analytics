@@ -131,13 +131,35 @@ table fact_orden
 
 		annotation SummarizationSetBy = Automatic
 
+	column posible_fraccionamiento
+		dataType: int64
+		isHidden
+		lineageTag: 2ea643f2-a255-5161-9d33-2e47cd8b833b
+		summarizeBy: none
+		sourceColumn: posible_fraccionamiento
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Compras ordinarias de S/ 80 000 a 119 999, en tramos de S/ 1 000 (80 = S/ 80 000–80 999). Sirve para ver el comportamiento alrededor del umbral de la Gran Compra.
+	column tramo_umbral_miles =
+			IF (
+			    fact_orden[gran_compra] = 0 && fact_orden[total] >= 80000 && fact_orden[total] < 120000,
+			    INT ( fact_orden[total] / 1000 )
+			)
+		dataType: int64
+		formatString: 0
+		lineageTag: c53fe92e-81e9-55cd-a970-04bd56c9fe80
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_orden = m
 		mode: import
 		source =
 				let
 				    Origen = Csv.Document(File.Contents(RutaDatos & "fact_orden.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
-				    Tipos = Table.TransformColumnTypes(Encabezados, {{"orden", type text}, {"fecha", type date}, {"ruc_entidad", type text}, {"ruc_proveedor", type text}, {"catalogo_id", Int64.Type}, {"estado_id", type text}, {"gran_compra", Int64.Type}, {"igv", type number}, {"total", type number}, {"igv_exonerado", Int64.Type}, {"igv_parcial", Int64.Type}, {"atipico_alto", Int64.Type}, {"atipico_bajo", Int64.Type}, {"ordinaria_sobre_umbral", Int64.Type}}, "en-US")
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"orden", type text}, {"fecha", type date}, {"ruc_entidad", type text}, {"ruc_proveedor", type text}, {"catalogo_id", Int64.Type}, {"estado_id", type text}, {"gran_compra", Int64.Type}, {"igv", type number}, {"total", type number}, {"igv_exonerado", Int64.Type}, {"igv_parcial", Int64.Type}, {"atipico_alto", Int64.Type}, {"atipico_bajo", Int64.Type}, {"ordinaria_sobre_umbral", Int64.Type}, {"posible_fraccionamiento", Int64.Type}}, "en-US")
 				in
 				    Tipos
 

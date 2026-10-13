@@ -1,31 +1,36 @@
 [contexto],[clave],[medida],[valor]
-global,total,Monto,"8518530614,91999"
+global,total,Monto,"8518530614,919981"
 global,total,Órdenes,511782
-global,total,Ticket promedio,"16644,84216897036"
+global,total,Ticket promedio,"16644,842168970346"
 global,total,Ticket mediano,"2690,4"
 global,total,Entidades compradoras,2348
 global,total,Proveedores con ventas,3569
-global,total,Monto compra efectiva,"8511264017,179983"
-global,total,HHI,"48,13477938126351"
-global,total,Participación top 3 proveedores,"0,07424328819248363"
-global,total,Participación top 10 proveedores,"0,17366959958902434"
+global,total,Monto compra efectiva,"8511264017,179977"
+global,total,HHI,"48,13477938126363"
+global,total,Participación top 3 proveedores,"0,07424328819248376"
+global,total,Participación top 10 proveedores,"0,17366959958902456"
 global,total,Proveedores para el 80 %,576
-global,total,Participación del líder,"0,029043178344241208"
-global,total,Participación top 10 entidades,"0,14390023458189022"
+global,total,Participación del líder,"0,029043178344241243"
+global,total,Participación top 10 entidades,"0,1439002345818902"
 global,total,Catálogos usados,29
 global,total,Monto Gran Compra,"4944943144,460004"
-global,total,Monto compra ordinaria,"3573587470,4599986"
-global,total,% Gran Compra,"0,5804925013474814"
+global,total,Monto compra ordinaria,"3573587470,4599957"
+global,total,% Gran Compra,"0,580492501347482"
 global,total,Órdenes ordinarias sobre el umbral,785
 global,total,Monto ordinario sobre el umbral,"121385236,20999998"
-global,total,% ordinario sobre el umbral,"0,03396733316685125"
-global,total,Monto con IGV exonerado,"243383347,23"
+global,total,% ordinario sobre el umbral,"0,03396733316685128"
+global,total,Monto con IGV exonerado,"243383347,22999993"
 global,total,Órdenes atípicas altas,120
-global,total,% del monto en atípicos altos,"0,11867061801356164"
+global,total,% del monto en atípicos altos,"0,11867061801356177"
 global,total,Órdenes que no son compra,340
-anio,2022,Monto,"1994648778,350025"
-anio,2023,Monto,"1885319292,8700044"
-anio,2024,Monto,"1934563063,6500232"
+global,total,Monto ordinario sobre el umbral (S/ millones),"121,38523620999997"
+global,total,Órdenes en posibles compras partidas,2824
+global,total,Monto en posibles compras partidas (S/ millones),"124,27122833"
+global,total,Monto ene–set (S/ millones),"5947,351321199996"
+global,total,Proveedores con ventas ene–set,3469
+anio,2022,Monto,"1994648778,3500264"
+anio,2023,Monto,"1885319292,8700032"
+anio,2024,Monto,"1934563063,6500237"
 anio,2025,Monto,"1778887274,5600333"
 anio,2026,Monto,"925112205,4899998"
 anio,2022,Órdenes,137373
@@ -34,62 +39,72 @@ anio,2024,Órdenes,102901
 anio,2025,Órdenes,91110
 anio,2026,Órdenes,63773
 anio,2022,Var. interanual,
-anio,2023,Var. interanual,"-0,05481139670635876"
-anio,2024,Var. interanual,"0,026119592032106197"
+anio,2023,Var. interanual,"-0,05481139670635936"
+anio,2024,Var. interanual,"0,02611959203210645"
 anio,2025,Var. interanual,"-0,08047077503705072"
 anio,2026,Var. interanual,"-0,2118801257289238"
-anio,2022,% Gran Compra,"0,5778113410689634"
-anio,2023,% Gran Compra,"0,5444020231382458"
-anio,2024,% Gran Compra,"0,6049724133530381"
+anio,2022,% Gran Compra,"0,5778113410689629"
+anio,2023,% Gran Compra,"0,5444020231382461"
+anio,2024,% Gran Compra,"0,6049724133530379"
 anio,2025,% Gran Compra,"0,6214873387654297"
 anio,2026,% Gran Compra,"0,529803428212686"
 anio,2022,Participación del último trimestre,"0,29359029107591483"
-anio,2023,Participación del último trimestre,"0,3862187881828501"
-anio,2024,Participación del último trimestre,"0,33721230227520627"
-anio,2025,Participación del último trimestre,"0,3401371125214501"
+anio,2023,Participación del último trimestre,"0,3862187881828502"
+anio,2024,Participación del último trimestre,"0,3372123022752062"
+anio,2025,Participación del último trimestre,"0,34013711252145007"
 anio,2026,Participación del último trimestre,
-anio,2022,Participación de diciembre,"0,09324482573009762"
-anio,2023,Participación de diciembre,"0,1174702641815435"
+anio,2022,Participación de diciembre,"0,09324482573009758"
+anio,2023,Participación de diciembre,"0,11747026418154353"
 anio,2024,Participación de diciembre,"0,11403452945791859"
-anio,2025,Participación de diciembre,"0,09196594689253816"
+anio,2025,Participación de diciembre,"0,09196594689253819"
 anio,2026,Participación de diciembre,
-anio,2022,HHI,"97,91415261791566"
-anio,2023,HHI,"64,05667898162982"
-anio,2024,HHI,"58,994560800761946"
+anio,2022,HHI,"97,9141526179155"
+anio,2023,HHI,"64,05667898162987"
+anio,2024,HHI,"58,99456080076191"
 anio,2025,HHI,"79,01353622175772"
-anio,2026,HHI,"90,19761385696805"
+anio,2026,HHI,"90,19761385696803"
 anio,2022,Entidades compradoras,1902
 anio,2023,Entidades compradoras,1887
 anio,2024,Entidades compradoras,1828
 anio,2025,Entidades compradoras,1836
 anio,2026,Entidades compradoras,1750
+anio,2022,Monto ene–set (S/ millones),"1409,039262920015"
+anio,2023,Monto ene–set (S/ millones),"1157,1735602400104"
+anio,2024,Monto ene–set (S/ millones),"1282,2045990600184"
+anio,2025,Monto ene–set (S/ millones),"1173,82169349001"
+anio,2026,Monto ene–set (S/ millones),"925,1122054899997"
+anio,2022,Proveedores con ventas ene–set,1956
+anio,2023,Proveedores con ventas ene–set,1655
+anio,2024,Proveedores con ventas ene–set,2158
+anio,2025,Proveedores con ventas ene–set,1658
+anio,2026,Proveedores con ventas ene–set,1275
 catalogo,Alimentos para consumo humano,Monto,"67689061,08000001"
-catalogo,Bebidas no alcohólicas,Monto,"37907306,89"
+catalogo,Bebidas no alcohólicas,Monto,"37907306,89000001"
 catalogo,"Cereales, aceite y menestras",Monto,"34923152,519999996"
-catalogo,Accesorios domésticos y bienes diversos,Monto,"160701550,74999994"
+catalogo,Accesorios domésticos y bienes diversos,Monto,"160701550,74999997"
 catalogo,Baterías y pilas,Monto,"58057759,280000076"
-catalogo,Bienes y herramientas diversos,Monto,"385683654,4200002"
+catalogo,Bienes y herramientas diversos,Monto,"385683654,41999936"
 catalogo,Componentes fotovoltaicos,Monto,"4809297,719999998"
 catalogo,Césped sintético,Monto,"2014732,5299999993"
-catalogo,Luminarias y material eléctrico,Monto,"43973340,82"
-catalogo,Madera aserrada,Monto,"98644453,01999995"
+catalogo,Luminarias y material eléctrico,Monto,"43973340,82000001"
+catalogo,Madera aserrada,Monto,"98644453,01999998"
 catalogo,Medidores eléctricos,Monto,"275800,83"
 catalogo,Protección de circuitos,Monto,"233456,50999999995"
-catalogo,"Tuberías, pinturas y acabados",Monto,"839698936,9000007"
-catalogo,Impresoras y consumibles,Monto,"1478248568,2899961"
-catalogo,Útiles de escritorio y papeles,Monto,"1030041880,3200006"
-catalogo,Limpieza y aseo,Monto,"419278944,0700008"
-catalogo,Aire acondicionado,Monto,"56546238,08999998"
+catalogo,"Tuberías, pinturas y acabados",Monto,"839698936,9000016"
+catalogo,Impresoras y consumibles,Monto,"1478248568,289998"
+catalogo,Útiles de escritorio y papeles,Monto,"1030041880,3199989"
+catalogo,Limpieza y aseo,Monto,"419278944,0700003"
+catalogo,Aire acondicionado,Monto,"56546238,089999996"
 catalogo,Maquinaria de jardinería y agricultura,Monto,"20941572,959999997"
-catalogo,Mobiliario,Monto,"195524316,15999916"
+catalogo,Mobiliario,Monto,"195524316,15999922"
 catalogo,Diagnóstico in vitro,Monto,"9796,36"
-catalogo,Material de laboratorio clínico,Monto,"9666979,289999995"
+catalogo,Material de laboratorio clínico,Monto,"9666979,289999994"
 catalogo,Pañales y afines,Monto,"38582,11"
-catalogo,Protección para la salud,Monto,"53317861,270000026"
+catalogo,Protección para la salud,Monto,"53317861,269999996"
 catalogo,Tubos hematológicos,Monto,"43699,37"
-catalogo,Computadoras y escáneres,Monto,"3135842971,3499894"
+catalogo,Computadoras y escáneres,Monto,"3135842971,349989"
 catalogo,Equipos multimedia,Monto,"87409015,12999998"
-catalogo,Llantas y neumáticos,Monto,"289506613,09"
+catalogo,Llantas y neumáticos,Monto,"289506613,09000045"
 catalogo,Calzado,Monto,"5802001,129999997"
 catalogo,Vestimenta,Monto,"1699072,66"
 catalogo,Alimentos para consumo humano,Órdenes,2224
@@ -122,61 +137,61 @@ catalogo,Llantas y neumáticos,Órdenes,24087
 catalogo,Calzado,Órdenes,556
 catalogo,Vestimenta,Órdenes,51
 catalogo,Alimentos para consumo humano,HHI,"461,3784802164734"
-catalogo,Bebidas no alcohólicas,HHI,"489,26987300402897"
+catalogo,Bebidas no alcohólicas,HHI,"489,26987300402857"
 catalogo,"Cereales, aceite y menestras",HHI,"787,4439665016556"
-catalogo,Accesorios domésticos y bienes diversos,HHI,"139,40633459282472"
-catalogo,Baterías y pilas,HHI,"304,33986206505796"
-catalogo,Bienes y herramientas diversos,HHI,"113,44683055057182"
+catalogo,Accesorios domésticos y bienes diversos,HHI,"139,40633459282475"
+catalogo,Baterías y pilas,HHI,"304,339862065058"
+catalogo,Bienes y herramientas diversos,HHI,"113,44683055057229"
 catalogo,Componentes fotovoltaicos,HHI,"2957,8326588112354"
 catalogo,Césped sintético,HHI,"2749,183394165521"
-catalogo,Luminarias y material eléctrico,HHI,"956,5759696862002"
-catalogo,Madera aserrada,HHI,"400,15152141258227"
+catalogo,Luminarias y material eléctrico,HHI,"956,5759696861998"
+catalogo,Madera aserrada,HHI,"400,151521412582"
 catalogo,Medidores eléctricos,HHI,"3725,8177914825983"
 catalogo,Protección de circuitos,HHI,"4352,59143023268"
-catalogo,"Tuberías, pinturas y acabados",HHI,"178,90534801777343"
-catalogo,Impresoras y consumibles,HHI,"77,68191646072445"
-catalogo,Útiles de escritorio y papeles,HHI,"172,17920913290257"
-catalogo,Limpieza y aseo,HHI,"164,278221962367"
-catalogo,Aire acondicionado,HHI,"417,4960943926764"
+catalogo,"Tuberías, pinturas y acabados",HHI,"178,905348017773"
+catalogo,Impresoras y consumibles,HHI,"77,68191646072425"
+catalogo,Útiles de escritorio y papeles,HHI,"172,17920913290308"
+catalogo,Limpieza y aseo,HHI,"164,27822196236727"
+catalogo,Aire acondicionado,HHI,"417,4960943926763"
 catalogo,Maquinaria de jardinería y agricultura,HHI,"328,45207718991054"
-catalogo,Mobiliario,HHI,"151,08043619285817"
+catalogo,Mobiliario,HHI,"151,08043619285812"
 catalogo,Diagnóstico in vitro,HHI,10000
-catalogo,Material de laboratorio clínico,HHI,"1742,7188058130635"
+catalogo,Material de laboratorio clínico,HHI,"1742,7188058130641"
 catalogo,Pañales y afines,HHI,"3714,502358561403"
-catalogo,Protección para la salud,HHI,"1076,8308696216977"
+catalogo,Protección para la salud,HHI,"1076,830869621699"
 catalogo,Tubos hematológicos,HHI,"9363,917254633125"
-catalogo,Computadoras y escáneres,HHI,"243,11813696933092"
+catalogo,Computadoras y escáneres,HHI,"243,11813696933098"
 catalogo,Equipos multimedia,HHI,"319,1977836191651"
-catalogo,Llantas y neumáticos,HHI,"211,64770995655948"
+catalogo,Llantas y neumáticos,HHI,"211,64770995655874"
 catalogo,Calzado,HHI,"882,3321007490708"
 catalogo,Vestimenta,HHI,"4115,106975110243"
 catalogo,Alimentos para consumo humano,Participación top 3 proveedores,"0,29357944670725505"
-catalogo,Bebidas no alcohólicas,Participación top 3 proveedores,"0,30028047318240914"
+catalogo,Bebidas no alcohólicas,Participación top 3 proveedores,"0,3002804731824091"
 catalogo,"Cereales, aceite y menestras",Participación top 3 proveedores,"0,38930580886745225"
-catalogo,Accesorios domésticos y bienes diversos,Participación top 3 proveedores,"0,09658344214827068"
+catalogo,Accesorios domésticos y bienes diversos,Participación top 3 proveedores,"0,09658344214827067"
 catalogo,Baterías y pilas,Participación top 3 proveedores,"0,19388786115067563"
-catalogo,Bienes y herramientas diversos,Participación top 3 proveedores,"0,1099514023060474"
+catalogo,Bienes y herramientas diversos,Participación top 3 proveedores,"0,10995140230604766"
 catalogo,Componentes fotovoltaicos,Participación top 3 proveedores,"0,8993763209984849"
 catalogo,Césped sintético,Participación top 3 proveedores,"0,734504256999315"
-catalogo,Luminarias y material eléctrico,Participación top 3 proveedores,"0,4419687430517135"
-catalogo,Madera aserrada,Participación top 3 proveedores,"0,21710127680122043"
+catalogo,Luminarias y material eléctrico,Participación top 3 proveedores,"0,44196874305171335"
+catalogo,Madera aserrada,Participación top 3 proveedores,"0,21710127680122038"
 catalogo,Medidores eléctricos,Participación top 3 proveedores,"0,9883112752053719"
 catalogo,Protección de circuitos,Participación top 3 proveedores,"0,9037476401921711"
-catalogo,"Tuberías, pinturas y acabados",Participación top 3 proveedores,"0,16620449467904988"
-catalogo,Impresoras y consumibles,Participación top 3 proveedores,"0,0898202196763112"
-catalogo,Útiles de escritorio y papeles,Participación top 3 proveedores,"0,15879622854673173"
-catalogo,Limpieza y aseo,Participación top 3 proveedores,"0,14682695320307335"
-catalogo,Aire acondicionado,Participación top 3 proveedores,"0,23437587534835078"
+catalogo,"Tuberías, pinturas y acabados",Participación top 3 proveedores,"0,16620449467904969"
+catalogo,Impresoras y consumibles,Participación top 3 proveedores,"0,0898202196763111"
+catalogo,Útiles de escritorio y papeles,Participación top 3 proveedores,"0,158796228546732"
+catalogo,Limpieza y aseo,Participación top 3 proveedores,"0,14682695320307357"
+catalogo,Aire acondicionado,Participación top 3 proveedores,"0,23437587534835072"
 catalogo,Maquinaria de jardinería y agricultura,Participación top 3 proveedores,"0,21977747224580982"
-catalogo,Mobiliario,Participación top 3 proveedores,"0,12188356030611935"
+catalogo,Mobiliario,Participación top 3 proveedores,"0,12188356030611931"
 catalogo,Diagnóstico in vitro,Participación top 3 proveedores,1
 catalogo,Material de laboratorio clínico,Participación top 3 proveedores,"0,6139117051941057"
 catalogo,Pañales y afines,Participación top 3 proveedores,1
-catalogo,Protección para la salud,Participación top 3 proveedores,"0,4179975953487826"
+catalogo,Protección para la salud,Participación top 3 proveedores,"0,4179975953487829"
 catalogo,Tubos hematológicos,Participación top 3 proveedores,1
-catalogo,Computadoras y escáneres,Participación top 3 proveedores,"0,191540394709695"
-catalogo,Equipos multimedia,Participación top 3 proveedores,"0,1875194470000889"
-catalogo,Llantas y neumáticos,Participación top 3 proveedores,"0,16387256727448735"
+catalogo,Computadoras y escáneres,Participación top 3 proveedores,"0,19154039470969508"
+catalogo,Equipos multimedia,Participación top 3 proveedores,"0,18751944700008893"
+catalogo,Llantas y neumáticos,Participación top 3 proveedores,"0,1638725672744871"
 catalogo,Calzado,Participación top 3 proveedores,"0,4289765986308937"
 catalogo,Vestimenta,Participación top 3 proveedores,"0,9969886632158509"
 catalogo,Alimentos para consumo humano,Proveedores para el 80 %,24
@@ -209,89 +224,141 @@ catalogo,Llantas y neumáticos,Proveedores para el 80 %,50
 catalogo,Calzado,Proveedores para el 80 %,13
 catalogo,Vestimenta,Proveedores para el 80 %,2
 catalogo,Alimentos para consumo humano,Participación del líder,"0,1104095385688278"
-catalogo,Bebidas no alcohólicas,Participación del líder,"0,12963315790962537"
+catalogo,Bebidas no alcohólicas,Participación del líder,"0,12963315790962535"
 catalogo,"Cereales, aceite y menestras",Participación del líder,"0,1445277735768398"
-catalogo,Accesorios domésticos y bienes diversos,Participación del líder,"0,03379006621067098"
+catalogo,Accesorios domésticos y bienes diversos,Participación del líder,"0,03379006621067097"
 catalogo,Baterías y pilas,Participación del líder,"0,08275315943264551"
-catalogo,Bienes y herramientas diversos,Participación del líder,"0,046912391807760634"
+catalogo,Bienes y herramientas diversos,Participación del líder,"0,04691239180776074"
 catalogo,Componentes fotovoltaicos,Participación del líder,"0,3823049199790445"
 catalogo,Césped sintético,Participación del líder,"0,4652377256250487"
-catalogo,Luminarias y material eléctrico,Participación del líder,"0,2578935002100667"
-catalogo,Madera aserrada,Participación del líder,"0,08025412679205511"
+catalogo,Luminarias y material eléctrico,Participación del líder,"0,25789350021006663"
+catalogo,Madera aserrada,Participación del líder,"0,08025412679205508"
 catalogo,Medidores eléctricos,Participación del líder,"0,5059266862974995"
 catalogo,Protección de circuitos,Participación del líder,"0,6181142260714855"
-catalogo,"Tuberías, pinturas y acabados",Participación del líder,"0,08953637982151406"
-catalogo,Impresoras y consumibles,Participación del líder,"0,04096160124142348"
-catalogo,Útiles de escritorio y papeles,Participación del líder,"0,08831113037048596"
-catalogo,Limpieza y aseo,Participación del líder,"0,06006024878224204"
-catalogo,Aire acondicionado,Participación del líder,"0,08245816375226882"
+catalogo,"Tuberías, pinturas y acabados",Participación del líder,"0,08953637982151397"
+catalogo,Impresoras y consumibles,Participación del líder,"0,04096160124142342"
+catalogo,Útiles de escritorio y papeles,Participación del líder,"0,08831113037048612"
+catalogo,Limpieza y aseo,Participación del líder,"0,060060248782242115"
+catalogo,Aire acondicionado,Participación del líder,"0,0824581637522688"
 catalogo,Maquinaria de jardinería y agricultura,Participación del líder,"0,11486317883544506"
-catalogo,Mobiliario,Participación del líder,"0,07015766278796151"
+catalogo,Mobiliario,Participación del líder,"0,0701576627879615"
 catalogo,Diagnóstico in vitro,Participación del líder,1
 catalogo,Material de laboratorio clínico,Participación del líder,"0,31623781103600584"
 catalogo,Pañales y afines,Participación del líder,"0,4488616615317306"
-catalogo,Protección para la salud,Participación del líder,"0,14299497970091776"
+catalogo,Protección para la salud,Participación del líder,"0,14299497970091782"
 catalogo,Tubos hematológicos,Participación del líder,"0,9671144000474148"
-catalogo,Computadoras y escáneres,Participación del líder,"0,07690911279469247"
+catalogo,Computadoras y escáneres,Participación del líder,"0,0769091127946925"
 catalogo,Equipos multimedia,Participación del líder,"0,06809817444055674"
-catalogo,Llantas y neumáticos,Participación del líder,"0,059259552094123154"
+catalogo,Llantas y neumáticos,Participación del líder,"0,05925955209412306"
 catalogo,Calzado,Participación del líder,"0,1852036643777766"
 catalogo,Vestimenta,Participación del líder,"0,46306323356412565"
 catalogo,Alimentos para consumo humano,% Gran Compra,"0,5533152846622406"
-catalogo,Bebidas no alcohólicas,% Gran Compra,"0,23639557054273236"
+catalogo,Bebidas no alcohólicas,% Gran Compra,"0,2363955705427323"
 catalogo,"Cereales, aceite y menestras",% Gran Compra,"0,5542585681208141"
-catalogo,Accesorios domésticos y bienes diversos,% Gran Compra,"0,5708063369761855"
+catalogo,Accesorios domésticos y bienes diversos,% Gran Compra,"0,5708063369761854"
 catalogo,Baterías y pilas,% Gran Compra,"0,38150280280675636"
-catalogo,Bienes y herramientas diversos,% Gran Compra,"0,5105851769791471"
+catalogo,Bienes y herramientas diversos,% Gran Compra,"0,5105851769791482"
 catalogo,Componentes fotovoltaicos,% Gran Compra,"0,8627152822637069"
 catalogo,Césped sintético,% Gran Compra,"0,734080597785355"
-catalogo,Luminarias y material eléctrico,% Gran Compra,"0,3706571812844128"
-catalogo,Madera aserrada,% Gran Compra,"0,4965607513690483"
+catalogo,Luminarias y material eléctrico,% Gran Compra,"0,3706571812844127"
+catalogo,Madera aserrada,% Gran Compra,"0,49656075136904815"
 catalogo,Medidores eléctricos,% Gran Compra,"0,5059266862974995"
 catalogo,Protección de circuitos,% Gran Compra,"0,5708847013947053"
-catalogo,"Tuberías, pinturas y acabados",% Gran Compra,"0,6526039805207721"
-catalogo,Impresoras y consumibles,% Gran Compra,"0,38848428386729966"
-catalogo,Útiles de escritorio y papeles,% Gran Compra,"0,3612993327847827"
-catalogo,Limpieza y aseo,% Gran Compra,"0,30626575029859143"
-catalogo,Aire acondicionado,% Gran Compra,"0,2797035419903033"
+catalogo,"Tuberías, pinturas y acabados",% Gran Compra,"0,6526039805207713"
+catalogo,Impresoras y consumibles,% Gran Compra,"0,38848428386729916"
+catalogo,Útiles de escritorio y papeles,% Gran Compra,"0,3612993327847833"
+catalogo,Limpieza y aseo,% Gran Compra,"0,3062657502985918"
+catalogo,Aire acondicionado,% Gran Compra,"0,27970354199030323"
 catalogo,Maquinaria de jardinería y agricultura,% Gran Compra,"0,46222690045724246"
-catalogo,Mobiliario,% Gran Compra,"0,41113292223059944"
+catalogo,Mobiliario,% Gran Compra,"0,41113292223059933"
 catalogo,Diagnóstico in vitro,% Gran Compra,
 catalogo,Material de laboratorio clínico,% Gran Compra,"0,202173853007189"
 catalogo,Pañales y afines,% Gran Compra,
 catalogo,Protección para la salud,% Gran Compra,"0,5750579357400393"
 catalogo,Tubos hematológicos,% Gran Compra,"0,03288559995258512"
-catalogo,Computadoras y escáneres,% Gran Compra,"0,8343674749707296"
+catalogo,Computadoras y escáneres,% Gran Compra,"0,8343674749707298"
 catalogo,Equipos multimedia,% Gran Compra,"0,5931660423457285"
-catalogo,Llantas y neumáticos,% Gran Compra,"0,21921341720878335"
+catalogo,Llantas y neumáticos,% Gran Compra,"0,21921341720878298"
 catalogo,Calzado,% Gran Compra,"0,543322291631474"
 catalogo,Vestimenta,% Gran Compra,"0,5569061831646447"
-catalogo,Alimentos para consumo humano,% ordinario sobre el umbral,"0,03669507563182745"
+catalogo,Alimentos para consumo humano,% ordinario sobre el umbral,"0,03669507563182746"
 catalogo,Bebidas no alcohólicas,% ordinario sobre el umbral,
 catalogo,"Cereales, aceite y menestras",% ordinario sobre el umbral,
-catalogo,Accesorios domésticos y bienes diversos,% ordinario sobre el umbral,"0,0016753799204512485"
-catalogo,Baterías y pilas,% ordinario sobre el umbral,"0,006346235303747417"
-catalogo,Bienes y herramientas diversos,% ordinario sobre el umbral,"0,03331338728360883"
+catalogo,Accesorios domésticos y bienes diversos,% ordinario sobre el umbral,"0,001675379920451248"
+catalogo,Baterías y pilas,% ordinario sobre el umbral,"0,006346235303747418"
+catalogo,Bienes y herramientas diversos,% ordinario sobre el umbral,"0,033313387283608685"
 catalogo,Componentes fotovoltaicos,% ordinario sobre el umbral,
 catalogo,Césped sintético,% ordinario sobre el umbral,
-catalogo,Luminarias y material eléctrico,% ordinario sobre el umbral,"0,023252370048751504"
-catalogo,Madera aserrada,% ordinario sobre el umbral,"0,04650037024836057"
+catalogo,Luminarias y material eléctrico,% ordinario sobre el umbral,"0,023252370048751497"
+catalogo,Madera aserrada,% ordinario sobre el umbral,"0,04650037024836054"
 catalogo,Medidores eléctricos,% ordinario sobre el umbral,
 catalogo,Protección de circuitos,% ordinario sobre el umbral,
-catalogo,"Tuberías, pinturas y acabados",% ordinario sobre el umbral,"0,02020199933294786"
-catalogo,Impresoras y consumibles,% ordinario sobre el umbral,"0,05879440826477865"
-catalogo,Útiles de escritorio y papeles,% ordinario sobre el umbral,"0,022660729143770215"
-catalogo,Limpieza y aseo,% ordinario sobre el umbral,"0,04946745638284963"
-catalogo,Aire acondicionado,% ordinario sobre el umbral,"0,010756264627986324"
+catalogo,"Tuberías, pinturas y acabados",% ordinario sobre el umbral,"0,02020199933294789"
+catalogo,Impresoras y consumibles,% ordinario sobre el umbral,"0,05879440826477868"
+catalogo,Útiles de escritorio y papeles,% ordinario sobre el umbral,"0,02266072914377024"
+catalogo,Limpieza y aseo,% ordinario sobre el umbral,"0,04946745638284969"
+catalogo,Aire acondicionado,% ordinario sobre el umbral,"0,01075626462798632"
 catalogo,Maquinaria de jardinería y agricultura,% ordinario sobre el umbral,"0,013059426497751082"
-catalogo,Mobiliario,% ordinario sobre el umbral,"0,005223248223016409"
+catalogo,Mobiliario,% ordinario sobre el umbral,"0,005223248223016408"
 catalogo,Diagnóstico in vitro,% ordinario sobre el umbral,
 catalogo,Material de laboratorio clínico,% ordinario sobre el umbral,"0,013725362093494141"
 catalogo,Pañales y afines,% ordinario sobre el umbral,
-catalogo,Protección para la salud,% ordinario sobre el umbral,"0,033697911973925875"
+catalogo,Protección para la salud,% ordinario sobre el umbral,"0,03369791197392588"
 catalogo,Tubos hematológicos,% ordinario sobre el umbral,
-catalogo,Computadoras y escáneres,% ordinario sobre el umbral,"0,0034945551864361806"
+catalogo,Computadoras y escáneres,% ordinario sobre el umbral,"0,0034945551864361815"
 catalogo,Equipos multimedia,% ordinario sobre el umbral,"0,0032214542099891753"
-catalogo,Llantas y neumáticos,% ordinario sobre el umbral,"0,08078330350542984"
+catalogo,Llantas y neumáticos,% ordinario sobre el umbral,"0,08078330350542968"
 catalogo,Calzado,% ordinario sobre el umbral,
-catalogo,Vestimenta,% ordinario sobre el umbral,"0,1420516707084488"
+catalogo,Vestimenta,% ordinario sobre el umbral,"0,14205167070844885"
+mes,1,Participación promedio del mes,"0,009374556754642657"
+mes,2,Participación promedio del mes,"0,045495255601951626"
+mes,3,Participación promedio del mes,"0,09000257420330587"
+mes,4,Participación promedio del mes,"0,09239084093512144"
+mes,5,Participación promedio del mes,"0,08990374248658581"
+mes,6,Participación promedio del mes,"0,07473746770338723"
+mes,7,Participación promedio del mes,"0,08078776431742807"
+mes,8,Participación promedio del mes,"0,08339046866969471"
+mes,9,Participación promedio del mes,"0,09462770581401626"
+mes,10,Participación promedio del mes,"0,10971720173665217"
+mes,11,Participación promedio del mes,"0,12539353021167793"
+mes,12,Participación promedio del mes,"0,10417889156552447"
+tramo,100,Órdenes en el tramo,20
+tramo,109,Órdenes en el tramo,16
+tramo,83,Órdenes en el tramo,133
+tramo,98,Órdenes en el tramo,132
+tramo,88,Órdenes en el tramo,121
+tramo,95,Órdenes en el tramo,115
+tramo,89,Órdenes en el tramo,130
+tramo,85,Órdenes en el tramo,132
+tramo,87,Órdenes en el tramo,111
+tramo,114,Órdenes en el tramo,13
+tramo,105,Órdenes en el tramo,15
+tramo,117,Órdenes en el tramo,11
+tramo,101,Órdenes en el tramo,17
+tramo,118,Órdenes en el tramo,10
+tramo,102,Órdenes en el tramo,14
+tramo,108,Órdenes en el tramo,17
+tramo,110,Órdenes en el tramo,9
+tramo,111,Órdenes en el tramo,14
+tramo,106,Órdenes en el tramo,12
+tramo,112,Órdenes en el tramo,16
+tramo,115,Órdenes en el tramo,10
+tramo,104,Órdenes en el tramo,20
+tramo,103,Órdenes en el tramo,23
+tramo,119,Órdenes en el tramo,8
+tramo,107,Órdenes en el tramo,11
+tramo,113,Órdenes en el tramo,13
+tramo,116,Órdenes en el tramo,4
+tramo,80,Órdenes en el tramo,159
+tramo,86,Órdenes en el tramo,135
+tramo,94,Órdenes en el tramo,100
+tramo,90,Órdenes en el tramo,126
+tramo,99,Órdenes en el tramo,286
+tramo,92,Órdenes en el tramo,103
+tramo,96,Órdenes en el tramo,96
+tramo,84,Órdenes en el tramo,146
+tramo,91,Órdenes en el tramo,120
+tramo,82,Órdenes en el tramo,152
+tramo,97,Órdenes en el tramo,105
+tramo,93,Órdenes en el tramo,94
+tramo,81,Órdenes en el tramo,144

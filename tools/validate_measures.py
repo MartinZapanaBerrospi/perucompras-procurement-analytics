@@ -31,11 +31,18 @@ GLOBAL = ["Monto", "Órdenes", "Ticket promedio", "Ticket mediano", "Entidades c
           "Participación top 10 entidades", "Catálogos usados", "Monto Gran Compra", "Monto compra ordinaria",
           "% Gran Compra", "Órdenes ordinarias sobre el umbral", "Monto ordinario sobre el umbral",
           "% ordinario sobre el umbral", "Monto con IGV exonerado", "Órdenes atípicas altas",
-          "% del monto en atípicos altos", "Órdenes que no son compra"]
+          "% del monto en atípicos altos", "Órdenes que no son compra", "Monto ordinario sobre el umbral (S/ millones)",
+          "Órdenes en posibles compras partidas", "Monto en posibles compras partidas (S/ millones)",
+          "Monto ene–set (S/ millones)", "Proveedores con ventas ene–set"]
 BY_YEAR = ["Monto", "Órdenes", "Var. interanual", "% Gran Compra", "Participación del último trimestre",
-           "Participación de diciembre", "HHI", "Entidades compradoras"]
+           "Participación de diciembre", "HHI", "Entidades compradoras", "Monto ene–set (S/ millones)",
+           "Proveedores con ventas ene–set"]
 BY_CATALOG = ["Monto", "Órdenes", "HHI", "Participación top 3 proveedores", "Proveedores para el 80 %",
               "Participación del líder", "% Gran Compra", "% ordinario sobre el umbral"]
+BY_MONTH = ["Participación promedio del mes"]      # contexto: cada mes (1 a 12)
+BY_BAND = ["Órdenes en el tramo"]                            # contexto: cada tramo de S/ 1 000 entre S/ 80 000 y 119 999
+CUTOFF_MONTH = config.END[1]
+LAST_FULL_YEAR = config.END[0] if config.END[1] == 12 else config.END[0] - 1
 
 
 # ---------------------------------------------------------------------------------------------
@@ -100,6 +107,11 @@ def measures(d: pd.DataFrame, names: list[str], prior: pd.DataFrame | None = Non
         "Participación del último trimestre": d.loc[d["fecha"].dt.month >= 10, "total"].sum() / total,
         "Participación de diciembre": d.loc[d["fecha"].dt.month == 12, "total"].sum() / total,
         "Var. interanual": (total / prior["total"].sum() - 1) if prior is not None and len(prior) else np.nan,
+        "Monto ordinario sobre el umbral (S/ millones)": d.loc[over, "total"].sum() / 1e6,
+        "Órdenes en posibles compras partidas": int(d["posible_fraccionamiento"].sum()),
+        "Monto en posibles compras partidas (S/ millones)": d.loc[d["posible_fraccionamiento"] == 1, "total"].sum() / 1e6,
+        "Monto ene–set (S/ millones)": d.loc[d["fecha"].dt.month <= CUTOFF_MONTH, "total"].sum() / 1e6,
+        "Proveedores con ventas ene–set": d.loc[d["fecha"].dt.month <= CUTOFF_MONTH, "ruc_proveedor"].nunique(),
     }
     return {k: out[k] for k in names}
 
@@ -116,6 +128,14 @@ def expected() -> pd.DataFrame:
         rows += [("anio", str(year), k, v) for k, v in measures(g, BY_YEAR, prior).items()]
     for catalog, g in d.groupby("catalogo"):
         rows += [("catalogo", catalog, k, v) for k, v in measures(g, BY_CATALOG).items()]
+    full = d[d["fecha"].dt.year <= LAST_FULL_YEAR]
+    shares = full.groupby([full["fecha"].dt.year, full["fecha"].dt.month])["total"].sum()
+    shares = shares / shares.groupby(level=0).transform("sum")
+    for month, value in shares.groupby(level=1).mean().items():
+        rows.append(("mes", str(month), "Participación promedio del mes", value))
+    ordinary = d[(d["gran_compra"] == 0) & d["total"].between(80_000, 120_000, inclusive="left")]
+    for band, value in ordinary.groupby((ordinary["total"] // 1000).astype(int)).size().items():
+        rows.append(("tramo", str(band), "Órdenes en el tramo", value))
     return pd.DataFrame(rows, columns=["contexto", "clave", "medida", "python"])
 
 
@@ -137,6 +157,13 @@ def query() -> str:
     for m in BY_CATALOG:
         parts.append(f'SELECTCOLUMNS ( VALUES ( dim_catalogo[catalogo] ), "contexto", "catalogo", "clave", dim_catalogo[catalogo], '
                      f'"medida", "{m}", "valor", {dax_name(m)} )')
+    for m in BY_MONTH:
+        parts.append(f'SELECTCOLUMNS ( VALUES ( dim_fecha[mes] ), "contexto", "mes", "clave", FORMAT ( dim_fecha[mes], "0" ), '
+                     f'"medida", "{m}", "valor", {dax_name(m)} )')
+    for m in BY_BAND:
+        parts.append('SELECTCOLUMNS ( FILTER ( VALUES ( fact_orden[tramo_umbral_miles] ), '
+                     'NOT ISBLANK ( fact_orden[tramo_umbral_miles] ) ), "contexto", "tramo", '
+                     f'"clave", FORMAT ( fact_orden[tramo_umbral_miles], "0" ), "medida", "{m}", "valor", {dax_name(m)} )')
     return "EVALUATE\nUNION (\n    " + ",\n    ".join(parts) + "\n)\n"
 
 

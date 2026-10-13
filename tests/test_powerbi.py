@@ -26,7 +26,8 @@ def test_las_variables_dax_no_usan_palabras_reservadas():
 
 def test_las_medidas_validadas_existen_en_el_modelo():
     names = {m[1] for m in build_model.MEASURES}
-    for group in (validate_measures.GLOBAL, validate_measures.BY_YEAR, validate_measures.BY_CATALOG):
+    for group in (validate_measures.GLOBAL, validate_measures.BY_YEAR, validate_measures.BY_CATALOG,
+                  validate_measures.BY_MONTH, validate_measures.BY_BAND):
         assert set(group) <= names
 
 
@@ -43,12 +44,64 @@ def test_el_tmdl_versionado_es_el_que_produce_el_generador(tmp_path, monkeypatch
 def test_todas_las_medidas_coinciden_con_python():
     result = pd.read_csv(ROOT / "reports" / "validacion_medidas.csv")
     expected = (len(validate_measures.GLOBAL) + 5 * len(validate_measures.BY_YEAR)
-                + 29 * len(validate_measures.BY_CATALOG))
+                + 29 * len(validate_measures.BY_CATALOG) + 12 * len(validate_measures.BY_MONTH)
+                + 40 * len(validate_measures.BY_BAND))
     assert len(result) == expected
     assert (result["resultado"] == "cumple").all()
+
+
+def visuals_by_page():
+    import json
+    pages = {}
+    for path in (ROOT / "powerbi" / "perucompras.Report" / "definition" / "pages").glob("*/visuals/*/visual.json"):
+        pages.setdefault(path.parents[2].name, []).append(json.loads(path.read_text(encoding="utf-8")))
+    return pages
+
+
+def test_los_visuales_caben_en_el_lienzo_y_no_se_enciman():
+    for page, visuals in visuals_by_page().items():
+        boxes = [(v["name"], v["position"]) for v in visuals]
+        for name, p in boxes:
+            assert p["x"] >= 0 and p["y"] >= 0, (page, name)
+            assert p["x"] + p["width"] <= 1280 and p["y"] + p["height"] <= 720, (page, name)
+        for i, (a, pa) in enumerate(boxes):
+            for b, pb in boxes[i + 1:]:
+                overlap = (pa["x"] < pb["x"] + pb["width"] and pb["x"] < pa["x"] + pa["width"]
+                           and pa["y"] < pb["y"] + pb["height"] and pb["y"] < pa["y"] + pa["height"])
+                assert not overlap, (page, a, b)
+
+
+def test_los_visuales_solo_usan_medidas_y_columnas_del_modelo():
+    import json
+    measures = {m[1] for m in build_model.MEASURES}
+    columns = {(t, c[0]) for t, spec in build_model.TABLES.items() for c in spec["columns"]}
+
+    def walk(node):
+        if isinstance(node, dict):
+            if "Measure" in node:
+                assert node["Measure"]["Property"] in measures, node["Measure"]["Property"]
+            if "Column" in node:
+                ref = (node["Column"]["Expression"]["SourceRef"]["Entity"], node["Column"]["Property"])
+                assert ref in columns, ref
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    for visuals in visuals_by_page().values():
+        for v in visuals:
+            walk(v)
+
+
+def test_cada_pagina_tiene_titulo_y_fuente():
+    for page, visuals in visuals_by_page().items():
+        names = {v["name"] for v in visuals}
+        assert {"titulo", "fuente"} <= names, page
 
 
 def test_cada_columna_del_csv_esta_en_el_modelo():
     for name, spec in build_model.TABLES.items():
         header = (ROOT / "data" / "curated" / f"{name}.csv").open(encoding="utf-8").readline().strip().split(",")
-        assert [c[0] for c in spec["columns"]] == header, name
+        loaded = [c[0] for c in spec["columns"] if not c[2].get("expression")]  # sin columnas calculadas
+        assert loaded == header, name

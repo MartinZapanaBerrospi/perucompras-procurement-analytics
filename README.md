@@ -22,8 +22,8 @@ en cada catálogo, quién compra y en qué momento del año?
 | 3. Transformación | Cerrada | [03_transformacion.md](docs/03_transformacion.md) |
 | 4. Modelado | Cerrada | [04_modelado.md](docs/04_modelado.md) |
 | 5. Análisis | Cerrada | [05_analisis.md](docs/05_analisis.md) |
-| 6. Tablero | En curso | — |
-| 7. Hallazgos | Pendiente | — |
+| 6. Tablero | Cerrada | [powerbi/README.md](powerbi/README.md) |
+| 7. Hallazgos | En curso | — |
 | 8. Automatización | Pendiente | — |
 | 9. Publicación | Pendiente | — |
 
