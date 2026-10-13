@@ -17,8 +17,8 @@ en cada catálogo, quién compra y en qué momento del año?
 | Fase | Estado | Documento |
 |---|---|---|
 | 0. Definición | Cerrada | [00_definicion.md](docs/00_definicion.md) |
-| 1. Adquisición | En curso | — |
-| 2. Calidad | Pendiente | — |
+| 1. Adquisición | Cerrada | [01_adquisicion.md](docs/01_adquisicion.md) |
+| 2. Calidad | En curso | — |
 | 3. Transformación | Pendiente | — |
 | 4. Modelado | Pendiente | — |
 | 5. Análisis | Pendiente | — |

@@ -146,6 +146,8 @@ def verify(manifest: dict) -> list[str]:
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")  # la consola de Windows no usa UTF-8 por defecto
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--verificar", action="store_true",
                         help="solo comprueba data/raw/ordenes contra el manifiesto")
