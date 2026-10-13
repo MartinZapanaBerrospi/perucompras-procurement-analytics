@@ -21,8 +21,8 @@ en cada catálogo, quién compra y en qué momento del año?
 | 2. Calidad | Cerrada | [02_calidad.md](docs/02_calidad.md) |
 | 3. Transformación | Cerrada | [03_transformacion.md](docs/03_transformacion.md) |
 | 4. Modelado | Cerrada | [04_modelado.md](docs/04_modelado.md) |
-| 5. Análisis | En curso | — |
-| 6. Tablero | Pendiente | — |
+| 5. Análisis | Cerrada | [05_analisis.md](docs/05_analisis.md) |
+| 6. Tablero | En curso | — |
 | 7. Hallazgos | Pendiente | — |
 | 8. Automatización | Pendiente | — |
 | 9. Publicación | Pendiente | — |
