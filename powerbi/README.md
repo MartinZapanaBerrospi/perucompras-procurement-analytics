@@ -1,6 +1,6 @@
 # Tablero de Power BI (PBIP)
 
-> Fase 6 · Estado: **cerrada** (2026-10-13). **[Ver el tablero publicado](https://app.powerbi.com/view?r=eyJrIjoiZjYzMGVmYjAtNWMwNS00Y2RkLTliM2UtZjk5ZmJkNmRmMWYzIiwidCI6IjFlYmE0NDNmLTIzZTUtNDUzNC05MGQxLTA5NzZhYWJlODZhYyIsImMiOjR9)**
+> Fase 6 · Estado: **cerrada** (2026-10-13). **[Ver el tablero publicado](https://app.powerbi.com/view?r=eyJrIjoiZjYzMGVmYjAtNWMwNS00Y2RkLTliM2UtZjk5ZmJkNmRmMWYzIiwidCI6IjFlYmE0NDNmLTIzZTUtNDUzNC05MGQxLTA5NzZhYWJlODZhYyIsImMiOjR9&pageName=p1_resumen)**
 
 El informe se guarda como **Power BI Project**: el modelo en TMDL y el informe en PBIR (JSON),
 todo en texto, revisable en GitHub sin abrir Power BI. **Ninguno de los dos se armó a mano.** Los
