@@ -113,8 +113,7 @@ def main() -> None:
             "useDefaultAggregateDisplayName": True,
         },
     })
-    base = ROOT.parent / "sbs-credit-risk-analytics" / "powerbi" / "sbs_credit_risk.Report" / \
-        "StaticResources" / "SharedResources" / "BaseThemes" / f"{BASE_THEME}.json"
+    base = ROOT / "tools" / "assets" / f"{BASE_THEME}.json"      # tema base de Power BI Desktop 2.157
     shared = REPORT / "StaticResources" / "SharedResources" / "BaseThemes" / f"{BASE_THEME}.json"
     shared.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(base, shared)
