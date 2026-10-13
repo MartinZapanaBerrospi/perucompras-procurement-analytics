@@ -1,0 +1,30 @@
+catalogo_id,catalogo,rubro,vigente_desde,vigente_hasta,con_compras_al_corte
+1,Alimentos para consumo humano,Alimentos y bebidas,2022-02,2024-12,0
+2,Bebidas no alcohólicas,Alimentos y bebidas,2022-01,2026-09,1
+3,"Cereales, aceite y menestras",Alimentos y bebidas,2025-01,2026-09,1
+4,Accesorios domésticos y bienes diversos,Bienes diversos,2025-01,2026-09,1
+5,Baterías y pilas,Bienes diversos,2022-01,2026-09,1
+6,Bienes y herramientas diversos,Bienes diversos,2022-01,2025-01,0
+7,Componentes fotovoltaicos,Construcción y electricidad,2022-06,2025-06,0
+8,Césped sintético,Construcción y electricidad,2022-01,2024-12,0
+9,Luminarias y material eléctrico,Construcción y electricidad,2022-01,2026-09,1
+10,Madera aserrada,Construcción y electricidad,2022-09,2025-07,0
+11,Medidores eléctricos,Construcción y electricidad,2022-03,2023-08,0
+12,Protección de circuitos,Construcción y electricidad,2022-03,2024-05,0
+13,"Tuberías, pinturas y acabados",Construcción y electricidad,2022-01,2026-09,1
+14,Impresoras y consumibles,Impresión y oficina,2022-01,2026-09,1
+15,Útiles de escritorio y papeles,Impresión y oficina,2022-01,2026-09,1
+16,Limpieza y aseo,Limpieza,2022-01,2026-09,1
+17,Aire acondicionado,Mobiliario y equipamiento,2022-01,2026-09,1
+18,Maquinaria de jardinería y agricultura,Mobiliario y equipamiento,2022-02,2026-09,1
+19,Mobiliario,Mobiliario y equipamiento,2022-01,2026-09,1
+20,Diagnóstico in vitro,Salud,2022-03,2022-03,0
+21,Material de laboratorio clínico,Salud,2022-01,2025-07,0
+22,Pañales y afines,Salud,2024-03,2024-12,0
+23,Protección para la salud,Salud,2022-01,2025-09,0
+24,Tubos hematológicos,Salud,2022-03,2022-09,0
+25,Computadoras y escáneres,Tecnología,2022-01,2026-09,1
+26,Equipos multimedia,Tecnología,2022-01,2026-09,1
+27,Llantas y neumáticos,Vehículos,2022-01,2026-09,1
+28,Calzado,Vestimenta y calzado,2023-04,2025-11,0
+29,Vestimenta,Vestimenta y calzado,2024-05,2025-06,0

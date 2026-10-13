@@ -23,13 +23,11 @@ Uso:
 import csv
 import sys
 
-import numpy as np
 import pandas as pd
 
 from src import config, validate
-from src.parse_ordenes import (AMOUNT_COLUMNS, COLUMNS, DATE_COLUMNS, decode, normalize_text,
-                               parse_amount, parse_date, read_raw, ruc_is_valid, split_framework,
-                               strip_fields)
+from src.parse_ordenes import (AMOUNT_COLUMNS, COLUMNS, DATE_COLUMNS, clean, decode, load_orders,
+                               normalize_text, outlier_thresholds, ruc_is_valid)
 
 REQUIRED = ["ruc_proveedor", "proveedor", "ruc_entidad", "entidad", "tipo_procedimiento", "orden",
             "estado", "fecha_formalizacion", "total", "acuerdo_marco"]
@@ -50,44 +48,25 @@ def is_empty(values: pd.Series) -> pd.Series:
 
 def load() -> tuple[pd.DataFrame, pd.DataFrame]:
     """Devuelve (órdenes tal como vienen, todo texto) y (una fila de metadatos por archivo)."""
+    raw = load_orders()
     with config.MANIFEST.open(encoding="utf-8", newline="") as f:
         manifest = list(csv.DictReader(f))
-    frames, files = [], []
+    files = []
     for row in manifest:
-        path = config.ROOT / row["archivo"]
-        content = path.read_bytes()
-        text, encoding = decode(content)
-        df = read_raw(path)
-        df.insert(0, "periodo_archivo", row["periodo"])
-        frames.append(df)
+        content = (config.ROOT / row["archivo"]).read_bytes()
+        _, encoding = decode(content)
+        month = raw[raw["periodo_archivo"] == row["periodo"]].drop(columns="periodo_archivo")
         files.append({
             "periodo": row["periodo"],
             "archivo_portal": row["archivo_portal"],
             "codificacion": encoding,
             "fin_de_linea": "CRLF" if b"\r\n" in content else "LF",
-            "columnas": len(df.columns) - 1,
-            "filas": len(df),
-            "celdas_con_tabulador": int(df.drop(columns="periodo_archivo").apply(
-                lambda s: s.str.contains("\t", regex=False)).to_numpy().sum()),
+            "columnas": len(month.columns),
+            "filas": len(month),
+            "celdas_con_tabulador": int(month.apply(lambda s: s.str.contains("\t", regex=False)).to_numpy().sum()),
             "publicado_en": row["publicado_en"],
         })
-    return pd.concat(frames, ignore_index=True), pd.DataFrame(files)
-
-
-def clean(raw: pd.DataFrame) -> pd.DataFrame:
-    """Aplica las reglas de campo: espacios, fechas, montos y acuerdo marco."""
-    df = strip_fields(raw)
-    for col in DATE_COLUMNS:
-        df[col] = parse_date(df[col])
-    for col in AMOUNT_COLUMNS:
-        df[col] = parse_amount(df[col])
-    parts = df["acuerdo_marco"].map(split_framework)
-    df["codigo_acuerdo"] = parts.str[0]
-    df["clave_catalogo"] = parts.str[1].map(normalize_text)
-    catalogs = pd.read_csv(config.CATALOGS)
-    return df.merge(catalogs[["clave_normalizada", "catalogo", "rubro"]],
-                    left_on="clave_catalogo", right_on="clave_normalizada", how="left").drop(
-        columns="clave_normalizada")
+    return raw, pd.DataFrame(files)
 
 
 # ---------------------------------------------------------------------------------------------
@@ -284,10 +263,7 @@ def run_rules(raw: pd.DataFrame, df: pd.DataFrame, months: pd.DataFrame,
 # ---------------------------------------------------------------------------------------------
 
 def outliers(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    log_total = np.log10(df["total"])
-    q1, q3 = log_total.quantile([0.25, 0.75])
-    iqr = q3 - q1
-    low, high = 10 ** (q1 - config.OUTLIER_IQR_FACTOR * iqr), 10 ** (q3 + config.OUTLIER_IQR_FACTOR * iqr)
+    low, high = outlier_thresholds(df["total"])
     reason = pd.Series("", index=df.index)
     reason[df["total"] > high] = "monto_muy_alto"
     reason[df["total"] < low] = "monto_muy_bajo"

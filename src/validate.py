@@ -37,3 +37,31 @@ def compare(orders: pd.DataFrame) -> pd.DataFrame:
     out["tolerancia_pct"] = 100 * config.OFFICIAL_TOLERANCE
     out["resultado"] = out["diferencia_pct"].abs().le(out["tolerancia_pct"]).map({True: "cumple", False: "falla"})
     return out
+
+
+def from_curated() -> pd.DataFrame:
+    """Las órdenes del modelo curado, con las columnas que usa compare()."""
+    fact = pd.read_csv(config.CURATED / "fact_orden.csv", usecols=["orden", "fecha", "gran_compra", "total"],
+                       parse_dates=["fecha"])
+    return pd.DataFrame({
+        "orden": fact["orden"],
+        "fecha_formalizacion": fact["fecha"],
+        "tipo_procedimiento": fact["gran_compra"].map({1: "Gran Compra", 0: "Compra ordinaria"}),
+        "total": fact["total"],
+    })
+
+
+def main() -> int:
+    import sys
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    result = compare(from_curated())
+    config.REPORTS.mkdir(parents=True, exist_ok=True)
+    result.to_csv(config.REPORTS / "validaciones.csv", index=False)
+    print(result[["anio", "concepto", "medida", "oficial", "calculado", "diferencia_pct", "resultado"]].to_string(index=False))
+    failed = result[result["resultado"] != "cumple"]
+    return 1 if len(failed) else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
