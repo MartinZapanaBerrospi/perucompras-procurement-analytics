@@ -1,0 +1,279 @@
+table _Medidas
+	lineageTag: 32b1bd5a-3aec-59de-bc0c-fca64d92530f
+
+	/// Monto de las órdenes con IGV, en soles. Incluye todos los estados, como la cifra oficial.
+	measure Monto = SUM ( fact_orden[total] )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: 4cb56cc7-da0b-5b2a-861d-39336e1ed413
+
+	/// Monto en millones de soles.
+	measure 'Monto (S/ millones)' = DIVIDE ( [Monto], 1e6 )
+		formatString: #,##0.0
+		displayFolder: 1. Compras
+		lineageTag: ad02f07f-fbb5-5141-baff-9ed865f64b64
+
+	/// Número de órdenes de compra.
+	measure 'Órdenes' = COUNTROWS ( fact_orden )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: 4ff21e95-87a7-5607-b33f-c010a65d2be2
+
+	/// Monto promedio por orden, en soles.
+	measure 'Ticket promedio' = DIVIDE ( [Monto], [Órdenes] )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: 174ce67b-4f4a-5ce2-8074-aac43c3089be
+
+	/// Monto de la orden típica: la mitad de las órdenes cuesta menos. Menos sensible a las compras enormes que el promedio.
+	measure 'Ticket mediano' = MEDIAN ( fact_orden[total] )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: b5dd2263-9b94-5e54-8666-43e2c7cbe81d
+
+	/// Entidades (RUC) con al menos una orden.
+	measure 'Entidades compradoras' = DISTINCTCOUNT ( fact_orden[ruc_entidad] )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: ecb7458b-512e-5ebd-8a30-0386eca065df
+
+	/// Proveedores (RUC) con al menos una orden.
+	measure 'Proveedores con ventas' = DISTINCTCOUNT ( fact_orden[ruc_proveedor] )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: b19e9b8c-039b-5cab-b661-1ee644f53d0c
+
+	/// Monto sin órdenes nulas ni resueltas.
+	measure 'Monto compra efectiva' = CALCULATE ( [Monto], dim_estado[compra_efectiva] = 1 )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: bb326499-7101-5322-90f4-ce2b3983406e
+
+	/// Monto de las mismas fechas un año antes. En 2026 compara enero–setiembre con enero–setiembre de 2025.
+	measure 'Monto mismo periodo año anterior' = CALCULATE ( [Monto], DATEADD ( dim_fecha[fecha], -1, YEAR ) )
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: b1049b92-8dcc-51fc-849c-d83f28b1a62a
+
+	/// Variación del monto frente a las mismas fechas del año anterior.
+	measure 'Var. interanual' =
+			VAR antes = [Monto mismo periodo año anterior]
+			RETURN
+			    IF ( NOT ISBLANK ( antes ), DIVIDE ( [Monto] - antes, antes ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 1. Compras
+		lineageTag: 51113a94-e664-52c4-940e-8aff10e3bbf0
+
+	/// Parte del monto total de lo que está seleccionado.
+	measure 'Participación en el monto' = DIVIDE ( [Monto], CALCULATE ( [Monto], ALLSELECTED () ) )
+		formatString: 0.0%
+		displayFolder: 1. Compras
+		lineageTag: e653996a-2fd8-57be-8d0c-8aa74dcd10e7
+
+	/// Parte del monto que se lleva el proveedor dentro del contexto (catálogo, periodo).
+	measure 'Participación del proveedor' = DIVIDE ( [Monto], CALCULATE ( [Monto], REMOVEFILTERS ( dim_proveedor ) ) )
+		formatString: 0.0%
+		displayFolder: 2. Concentración
+		lineageTag: d2752944-20b1-5c39-8d31-c3f32ea22ba5
+
+	/// Índice Herfindahl-Hirschman: suma de las participaciones al cuadrado (0 a 10 000). Leerlo por catálogo.
+	measure HHI =
+			VAR total = [Monto]
+			RETURN
+			    SUMX (
+			        VALUES ( fact_orden[ruc_proveedor] ),
+			        VAR p = DIVIDE ( CALCULATE ( [Monto] ), total ) * 100
+			        RETURN p * p
+			    )
+		formatString: #,##0
+		displayFolder: 2. Concentración
+		lineageTag: 281fa8ad-c969-5443-b8b2-04503e9257d7
+
+	/// Lectura del HHI: menos de 1 500 baja, 1 500 a 2 500 moderada, más de 2 500 alta.
+	measure 'Nivel de concentración' =
+			VAR h = [HHI]
+			RETURN
+			    SWITCH ( TRUE (), ISBLANK ( h ), BLANK (), h < 1500, "Baja", h < 2500, "Moderada", "Alta" )
+		displayFolder: 2. Concentración
+		lineageTag: ea194b36-aa62-5ab4-8d1b-001d84ec1dd3
+
+	/// Parte del monto que se llevan los 3 mayores proveedores del contexto.
+	measure 'Participación top 3 proveedores' =
+			VAR mayores = TOPN ( 3, VALUES ( fact_orden[ruc_proveedor] ), CALCULATE ( [Monto] ), DESC )
+			RETURN
+			    DIVIDE ( CALCULATE ( [Monto], mayores ), [Monto] )
+		formatString: 0.0%
+		displayFolder: 2. Concentración
+		lineageTag: 9c95bd2e-3e3b-5371-a837-dd38ed9c15b9
+
+	/// Parte del monto que se llevan los 10 mayores proveedores del contexto.
+	measure 'Participación top 10 proveedores' =
+			VAR mayores = TOPN ( 10, VALUES ( fact_orden[ruc_proveedor] ), CALCULATE ( [Monto] ), DESC )
+			RETURN
+			    DIVIDE ( CALCULATE ( [Monto], mayores ), [Monto] )
+		formatString: 0.0%
+		displayFolder: 2. Concentración
+		lineageTag: c9fbc630-1121-524f-b358-a9413507e9de
+
+	/// Menor número de proveedores que, ordenados de mayor a menor, acumulan el 80 % del monto.
+	measure 'Proveedores para el 80 %' =
+			VAR t = ADDCOLUMNS ( VALUES ( fact_orden[ruc_proveedor] ), "@m", CALCULATE ( [Monto] ) )
+			VAR total = SUMX ( t, [@m] )
+			VAR conAcumulado =
+			    ADDCOLUMNS ( t, "@antes", VAR m = [@m] RETURN SUMX ( FILTER ( t, [@m] > m ), [@m] ) )
+			RETURN
+			    COUNTROWS ( FILTER ( conAcumulado, [@antes] < 0.8 * total ) )
+		formatString: #,##0
+		displayFolder: 2. Concentración
+		lineageTag: eb935221-1c5f-55b5-8c68-30107aae72e4
+
+	/// Proveedor con mayor monto en el contexto.
+	measure 'Proveedor líder' =
+			VAR t = ADDCOLUMNS ( VALUES ( dim_proveedor[proveedor_unico] ), "@m", CALCULATE ( [Monto] ) )
+			RETURN
+			    MAXX ( TOPN ( 1, t, [@m], DESC ), dim_proveedor[proveedor_unico] )
+		displayFolder: 2. Concentración
+		lineageTag: 67477181-87fe-5a41-976b-000776fb3b82
+
+	/// Parte del monto que se lleva el mayor proveedor del contexto.
+	measure 'Participación del líder' =
+			VAR t = ADDCOLUMNS ( VALUES ( fact_orden[ruc_proveedor] ), "@m", CALCULATE ( [Monto] ) )
+			RETURN
+			    DIVIDE ( MAXX ( t, [@m] ), [Monto] )
+		formatString: 0.0%
+		displayFolder: 2. Concentración
+		lineageTag: c647b380-1309-5e18-b154-0a46d373c4bd
+
+	/// Parte del monto que compró la entidad dentro del contexto.
+	measure 'Participación de la entidad' = DIVIDE ( [Monto], CALCULATE ( [Monto], REMOVEFILTERS ( dim_entidad ) ) )
+		formatString: 0.0%
+		displayFolder: 3. Entidades
+		lineageTag: 890a5543-b792-5b77-83df-de84b865ff90
+
+	/// Parte del monto que compran las 10 mayores entidades del contexto.
+	measure 'Participación top 10 entidades' =
+			VAR mayores = TOPN ( 10, VALUES ( fact_orden[ruc_entidad] ), CALCULATE ( [Monto] ), DESC )
+			RETURN
+			    DIVIDE ( CALCULATE ( [Monto], mayores ), [Monto] )
+		formatString: 0.0%
+		displayFolder: 3. Entidades
+		lineageTag: fcf0190d-05c4-5abd-b696-341818cf5f1c
+
+	/// Número de catálogos con compras en el contexto.
+	measure 'Catálogos usados' = DISTINCTCOUNT ( fact_orden[catalogo_id] )
+		formatString: #,##0
+		displayFolder: 3. Entidades
+		lineageTag: db110f5f-0328-54b4-ab93-409fbf7d8111
+
+	/// Parte del monto del año que se compró en el mes. Solo tiene sentido en años completos (2022 a 2025).
+	measure 'Participación del mes en el año' = DIVIDE ( [Monto], CALCULATE ( [Monto], ALLEXCEPT ( dim_fecha, dim_fecha[anio] ) ) )
+		formatString: 0.0%
+		displayFolder: 4. Calendario
+		lineageTag: dfeda7cf-3a42-5ba9-99a3-e8d808295d3a
+
+	/// Parte del monto del año comprada de octubre a diciembre. Solo años completos.
+	measure 'Participación del último trimestre' =
+			DIVIDE (
+			    CALCULATE ( [Monto], dim_fecha[trimestre] = "T4" ),
+			    CALCULATE ( [Monto], ALLEXCEPT ( dim_fecha, dim_fecha[anio] ) )
+			)
+		formatString: 0.0%
+		displayFolder: 4. Calendario
+		lineageTag: 71a28952-2220-5255-9d4d-7701bb8409ed
+
+	/// Parte del monto del año comprada en diciembre. Solo años completos.
+	measure 'Participación de diciembre' =
+			DIVIDE (
+			    CALCULATE ( [Monto], dim_fecha[mes] = 12 ),
+			    CALCULATE ( [Monto], ALLEXCEPT ( dim_fecha, dim_fecha[anio] ) )
+			)
+		formatString: 0.0%
+		displayFolder: 4. Calendario
+		lineageTag: 869e2a17-35d8-52df-b358-48156dc89f2e
+
+	/// Monto por el procedimiento de Gran Compra.
+	measure 'Monto Gran Compra' = CALCULATE ( [Monto], fact_orden[gran_compra] = 1 )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: 5cf51b78-e9a6-5623-b034-fb88c07cb1ef
+
+	/// Monto por compra ordinaria.
+	measure 'Monto compra ordinaria' = CALCULATE ( [Monto], fact_orden[gran_compra] = 0 )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: 9a17f4ae-e991-54c9-828a-237d49d2a6a0
+
+	/// Parte del monto que pasa por Gran Compra.
+	measure '% Gran Compra' = DIVIDE ( [Monto Gran Compra], [Monto] )
+		formatString: 0.0%
+		displayFolder: 5. Gran Compra
+		lineageTag: c7a792f7-9386-5515-931d-61ada7d5bcbc
+
+	/// Compras ordinarias de S/ 100 000 o más, el monto desde el cual la Gran Compra es obligatoria.
+	measure 'Órdenes ordinarias sobre el umbral' = CALCULATE ( [Órdenes], fact_orden[ordinaria_sobre_umbral] = 1 )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: fd7d574c-4af9-50f4-b9e2-b4cd5e40648c
+
+	/// Monto de las compras ordinarias de S/ 100 000 o más.
+	measure 'Monto ordinario sobre el umbral' = CALCULATE ( [Monto], fact_orden[ordinaria_sobre_umbral] = 1 )
+		formatString: #,##0
+		displayFolder: 5. Gran Compra
+		lineageTag: a8e5be45-a32e-5e5a-9702-423c1e210118
+
+	/// Parte del monto de compra ordinaria que supera el umbral de la Gran Compra.
+	measure '% ordinario sobre el umbral' = DIVIDE ( [Monto ordinario sobre el umbral], [Monto compra ordinaria] )
+		formatString: 0.0%
+		displayFolder: 5. Gran Compra
+		lineageTag: e438992d-9ade-5552-b994-e4b9bbeb5954
+
+	/// Monto de las órdenes sin IGV (Amazonía).
+	measure 'Monto con IGV exonerado' = CALCULATE ( [Monto], fact_orden[igv_exonerado] = 1 )
+		formatString: #,##0
+		displayFolder: 6. Calidad de datos
+		lineageTag: 686657e9-eb39-5e7c-a4cb-f87512f0d85a
+
+	/// Órdenes de más de S/ 3,44 millones: reales, pero pesan mucho en el total.
+	measure 'Órdenes atípicas altas' = CALCULATE ( [Órdenes], fact_orden[atipico_alto] = 1 )
+		formatString: #,##0
+		displayFolder: 6. Calidad de datos
+		lineageTag: 1789eafa-6600-5f02-8290-bd00a53cd075
+
+	/// Parte del monto que explican las órdenes atípicas altas.
+	measure '% del monto en atípicos altos' = DIVIDE ( CALCULATE ( [Monto], fact_orden[atipico_alto] = 1 ), [Monto] )
+		formatString: 0.0%
+		displayFolder: 6. Calidad de datos
+		lineageTag: 320fd77f-6fa8-56b9-be80-47832aeb7cb4
+
+	/// Órdenes nulas o resueltas.
+	measure 'Órdenes que no son compra' = CALCULATE ( [Órdenes], dim_estado[compra_efectiva] = 0 )
+		formatString: #,##0
+		displayFolder: 6. Calidad de datos
+		lineageTag: cf999e48-0447-5bf0-aff3-f3ca10fe7ba4
+
+	/// Fecha de la última orden en los datos.
+	measure 'Corte de datos' =
+			VAR f = CALCULATE ( MAX ( fact_orden[fecha] ), REMOVEFILTERS () )
+			RETURN
+			    "Órdenes formalizadas hasta el " & DAY ( f ) & " de " & LOWER ( FORMAT ( f, "mmmm", "es-PE" ) ) & " de " & YEAR ( f )
+		displayFolder: 7. Textos
+		lineageTag: ed2498fe-a3b1-5e46-93d5-7b53fd6911ce
+
+	/// Pie de fuente para cada página.
+	measure Fuente = "Fuente: Perú Compras, órdenes de compra de los Catálogos Electrónicos (datosabiertos.gob.pe). Elaboración propia."
+		displayFolder: 7. Textos
+		lineageTag: fd092a21-c86a-51ba-9d0f-dc35cde7454e
+
+	column Columna
+		dataType: string
+		isHidden
+		lineageTag: 41b48578-8c58-5a7b-b675-c890aa758dfb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Columna]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = calculated
+		mode: import
+		source = ROW ( "Columna", BLANK () )

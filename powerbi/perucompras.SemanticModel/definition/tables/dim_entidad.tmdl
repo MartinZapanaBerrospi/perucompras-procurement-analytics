@@ -1,0 +1,68 @@
+/// Entidad pública que compra, identificada por su RUC. Nombre más reciente; entidad_unica agrega el RUC cuando dos entidades comparten nombre.
+table dim_entidad
+	lineageTag: 68344fbc-e704-593c-acef-d3059328a25f
+
+	column ruc_entidad
+		dataType: string
+		isKey
+		lineageTag: 280d622c-b2ee-57b6-96b5-28ca292271e3
+		summarizeBy: none
+		sourceColumn: ruc_entidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column entidad
+		dataType: string
+		lineageTag: 0f5094dc-9d00-5e77-9480-1015f130151a
+		summarizeBy: none
+		sourceColumn: entidad
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nombre para mostrar; único en todo el modelo
+	column entidad_unica
+		dataType: string
+		lineageTag: 13fcd799-677b-52c5-9657-f2250bbefb9c
+		summarizeBy: none
+		sourceColumn: entidad_unica
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombres_historicos
+		dataType: int64
+		isHidden
+		lineageTag: a471ed97-164b-5222-85a2-eb72484cbac6
+		summarizeBy: none
+		sourceColumn: nombres_historicos
+
+		annotation SummarizationSetBy = Automatic
+
+	column primera_orden
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 23744357-7200-58aa-b613-a8952a5e961c
+		summarizeBy: none
+		sourceColumn: primera_orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ultima_orden
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 0882271a-563f-5cb8-a1ae-36e671797b5a
+		summarizeBy: none
+		sourceColumn: ultima_orden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_entidad = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_entidad.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"ruc_entidad", type text}, {"entidad", type text}, {"entidad_unica", type text}, {"nombres_historicos", Int64.Type}, {"primera_orden", type date}, {"ultima_orden", type date}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

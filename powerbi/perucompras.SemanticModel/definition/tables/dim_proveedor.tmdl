@@ -1,0 +1,76 @@
+/// Proveedor homologado en los Catálogos Electrónicos, identificado por su RUC.
+table dim_proveedor
+	lineageTag: d60726ef-fd98-5b4d-8cda-dead73be3516
+
+	column ruc_proveedor
+		dataType: string
+		isKey
+		lineageTag: f3773327-c962-5a62-9515-711ace78df2a
+		summarizeBy: none
+		sourceColumn: ruc_proveedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column proveedor
+		dataType: string
+		lineageTag: 67e4e62e-c51b-5ad5-9488-c4bd6e2bae6d
+		summarizeBy: none
+		sourceColumn: proveedor
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nombre para mostrar; único en todo el modelo
+	column proveedor_unico
+		dataType: string
+		lineageTag: 313cecff-03ac-51ce-bdf3-b923584c8f56
+		summarizeBy: none
+		sourceColumn: proveedor_unico
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_persona
+		dataType: string
+		lineageTag: 4f67bd64-03a6-5e42-a4a9-2a112175bbcd
+		summarizeBy: none
+		sourceColumn: tipo_persona
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombres_historicos
+		dataType: int64
+		isHidden
+		lineageTag: 0ea72787-607d-5649-8a59-e2bf29fc9ee1
+		summarizeBy: none
+		sourceColumn: nombres_historicos
+
+		annotation SummarizationSetBy = Automatic
+
+	column primera_orden
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 734ab015-1b9f-5613-b3f1-e9535ae1794d
+		summarizeBy: none
+		sourceColumn: primera_orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ultima_orden
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 9b532686-5ad8-5981-b112-2aaabdee41e7
+		summarizeBy: none
+		sourceColumn: ultima_orden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_proveedor = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_proveedor.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"ruc_proveedor", type text}, {"proveedor", type text}, {"proveedor_unico", type text}, {"tipo_persona", type text}, {"nombres_historicos", Int64.Type}, {"primera_orden", type date}, {"ultima_orden", type date}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

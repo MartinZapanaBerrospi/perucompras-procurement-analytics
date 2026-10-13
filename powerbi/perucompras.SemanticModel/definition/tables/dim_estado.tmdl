@@ -1,0 +1,41 @@
+/// Estado de la orden al corte del archivo. compra_efectiva = 0 para nulas y resueltas.
+table dim_estado
+	lineageTag: fdad77e3-8aa7-5162-a7fd-bcc00a4a96ab
+
+	column estado_id
+		dataType: string
+		isKey
+		isHidden
+		lineageTag: 64881a3e-3340-556a-a9a7-fa003b3e712f
+		summarizeBy: none
+		sourceColumn: estado_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado
+		dataType: string
+		lineageTag: e77c9ee1-2a06-5f50-aed4-b326a6a8579e
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column compra_efectiva
+		dataType: int64
+		lineageTag: 85d35cae-09a0-541a-877c-8a9a1b6c3853
+		summarizeBy: none
+		sourceColumn: compra_efectiva
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_estado = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_estado.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"estado_id", type text}, {"estado", type text}, {"compra_efectiva", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

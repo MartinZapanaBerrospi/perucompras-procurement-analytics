@@ -1,0 +1,6 @@
+/// Carpeta data/curated del repositorio, con barra final. Cámbiala al clonar el proyecto en otra ruta.
+expression RutaDatos = "C:\Users\marzabe\GitHub\perucompras-procurement-analytics\data\curated\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: f5deef1e-a4f3-51ea-b033-974e09129214
+
+	annotation PBI_ResultType = Text
+

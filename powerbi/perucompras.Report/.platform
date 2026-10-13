@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "perucompras"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "eb5f314f-7455-5842-a830-24de9523c8cd"
+  }
+}

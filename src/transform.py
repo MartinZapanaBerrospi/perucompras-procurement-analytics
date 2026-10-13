@@ -94,6 +94,7 @@ def dim_fecha() -> pd.DataFrame:
         "mes_nombre": [MONTHS_ES[m - 1] for m in days.month],
         "anio_mes": days.strftime("%Y-%m"),
         "dia_semana": [DAYS_ES[d] for d in days.dayofweek],
+        "dia_semana_num": days.dayofweek + 1,     # 1 = lunes; ordena dia_semana en Power BI
         "es_fin_de_semana": (days.dayofweek >= 5).astype(int),
     })
 

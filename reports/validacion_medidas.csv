@@ -1,0 +1,297 @@
+contexto,clave,medida,python,dax,diferencia_relativa,resultado
+anio,2022,% Gran Compra,0.5778113410689718,0.5778113410689634,1.4602854578003178e-14,cumple
+anio,2022,Entidades compradoras,1902.0,1902.0,0.0,cumple
+anio,2022,HHI,97.91415261791818,97.91415261791566,2.5689047163652354e-14,cumple
+anio,2022,Monto,1994648778.3500001,1994648778.350025,1.2431026702893375e-14,cumple
+anio,2022,Participación de diciembre,0.0932448257300987,0.0932448257300976,1.1757705891271246e-14,cumple
+anio,2022,Participación del último trimestre,0.29359029107591766,0.2935902910759148,9.832000416113844e-15,cumple
+anio,2022,Var. interanual,,,,cumple
+anio,2022,Órdenes,137373.0,137373.0,0.0,cumple
+anio,2023,% Gran Compra,0.5444020231382484,0.5444020231382458,4.690491306255501e-15,cumple
+anio,2023,Entidades compradoras,1887.0,1887.0,0.0,cumple
+anio,2023,HHI,64.05667898163001,64.05667898162982,3.105873878817272e-15,cumple
+anio,2023,Monto,1885319292.8700004,1885319292.8700044,2.1498299306938877e-15,cumple
+anio,2023,Participación de diciembre,0.11747026418154363,0.1174702641815435,1.1813872986926395e-15,cumple
+anio,2023,Participación del último trimestre,0.38621878818285044,0.3862187881828501,8.623788318393786e-16,cumple
+anio,2023,Var. interanual,-0.054811396706360815,-0.0548113967063587,3.861172617128552e-14,cumple
+anio,2023,Órdenes,116625.0,116625.0,0.0,cumple
+anio,2024,% Gran Compra,0.6049724133530445,0.6049724133530381,1.0643945741486432e-14,cumple
+anio,2024,Entidades compradoras,1828.0,1828.0,0.0,cumple
+anio,2024,HHI,58.99456080076346,58.994560800761946,2.5654162123187252e-14,cumple
+anio,2024,Monto,1934563063.65,1934563063.6500232,1.1954431782243318e-14,cumple
+anio,2024,Participación de diciembre,0.11403452945792006,0.1140345294579185,1.3630189398455638e-14,cumple
+anio,2024,Participación del último trimestre,0.33721230227520993,0.3372123022752062,1.1029393374441232e-14,cumple
+anio,2024,Var. interanual,0.026119592032093575,0.0261195920321061,4.795137489576115e-13,cumple
+anio,2024,Órdenes,102901.0,102901.0,0.0,cumple
+anio,2025,% Gran Compra,0.6214873387654395,0.6214873387654297,1.5720292284809905e-14,cumple
+anio,2025,Entidades compradoras,1836.0,1836.0,0.0,cumple
+anio,2025,HHI,79.01353622176066,79.01353622175772,3.7229657938492226e-14,cumple
+anio,2025,Monto,1778887274.56,1778887274.560033,1.862972599166761e-14,cumple
+anio,2025,Participación de diciembre,0.09196594689253991,0.0919659468925381,1.9617178705547862e-14,cumple
+anio,2025,Participación del último trimestre,0.34013711252145545,0.3401371125214501,1.566741858509956e-14,cumple
+anio,2025,Var. interanual,-0.08047077503706801,-0.0804707750370507,2.1505448889206032e-13,cumple
+anio,2025,Órdenes,91110.0,91110.0,0.0,cumple
+anio,2026,% Gran Compra,0.5298034282126851,0.529803428212686,1.6764301104967058e-15,cumple
+anio,2026,Entidades compradoras,1750.0,1750.0,0.0,cumple
+anio,2026,HHI,90.19761385696808,90.19761385696803,4.72657338953679e-16,cumple
+anio,2026,Monto,925112205.49,925112205.4899998,2.577185531513774e-16,cumple
+anio,2026,Participación de diciembre,0.0,,0.0,cumple
+anio,2026,Participación del último trimestre,0.0,,0.0,cumple
+anio,2026,Var. interanual,-0.21188012572892423,-0.2118801257289238,1.964948967262195e-15,cumple
+anio,2026,Órdenes,63773.0,63773.0,0.0,cumple
+catalogo,Accesorios domésticos y bienes diversos,% Gran Compra,0.570806336976185,0.5708063369761855,9.725041162879355e-16,cumple
+catalogo,Accesorios domésticos y bienes diversos,% ordinario sobre el umbral,0.0016753799204512459,0.0016753799204512,2.7438655287813052e-14,cumple
+catalogo,Accesorios domésticos y bienes diversos,HHI,139.40633459282486,139.40633459282472,1.0193837142844889e-15,cumple
+catalogo,Accesorios domésticos y bienes diversos,Monto,160701550.75,160701550.74999994,3.7090273551943697e-16,cumple
+catalogo,Accesorios domésticos y bienes diversos,Participación del líder,0.03379006621067096,0.0337900662106709,1.8481776491886017e-15,cumple
+catalogo,Accesorios domésticos y bienes diversos,Participación top 3 proveedores,0.09658344214827062,0.0965834421482706,2.873740570668395e-16,cumple
+catalogo,Accesorios domésticos y bienes diversos,Proveedores para el 80 %,65.0,65.0,0.0,cumple
+catalogo,Accesorios domésticos y bienes diversos,Órdenes,5218.0,5218.0,0.0,cumple
+catalogo,Aire acondicionado,% Gran Compra,0.2797035419903032,0.2797035419903033,3.969284824657837e-16,cumple
+catalogo,Aire acondicionado,% ordinario sobre el umbral,0.010756264627986319,0.0107562646279863,1.7740320544082052e-15,cumple
+catalogo,Aire acondicionado,HHI,417.4960943926766,417.4960943926764,4.0845952542500086e-16,cumple
+catalogo,Aire acondicionado,Monto,56546238.09,56546238.08999998,3.952825607106887e-16,cumple
+catalogo,Aire acondicionado,Participación del líder,0.0824581637522688,0.0824581637522688,0.0,cumple
+catalogo,Aire acondicionado,Participación top 3 proveedores,0.23437587534835075,0.2343758753483507,2.3684669400701803e-16,cumple
+catalogo,Aire acondicionado,Proveedores para el 80 %,20.0,20.0,0.0,cumple
+catalogo,Aire acondicionado,Órdenes,3937.0,3937.0,0.0,cumple
+catalogo,Alimentos para consumo humano,% Gran Compra,0.5533152846622407,0.5533152846622406,2.0064926008737823e-16,cumple
+catalogo,Alimentos para consumo humano,% ordinario sobre el umbral,0.03669507563182747,0.0366950756318274,2.0800565642321926e-15,cumple
+catalogo,Alimentos para consumo humano,HHI,461.37848021647306,461.3784802164734,7.392206784434911e-16,cumple
+catalogo,Alimentos para consumo humano,Monto,67689061.08000001,67689061.08000001,0.0,cumple
+catalogo,Alimentos para consumo humano,Participación del líder,0.11040953856882776,0.1104095385688278,3.770812192778952e-16,cumple
+catalogo,Alimentos para consumo humano,Participación top 3 proveedores,0.2935794467072552,0.293579446707255,7.563356611488018e-16,cumple
+catalogo,Alimentos para consumo humano,Proveedores para el 80 %,24.0,24.0,0.0,cumple
+catalogo,Alimentos para consumo humano,Órdenes,2224.0,2224.0,0.0,cumple
+catalogo,Baterías y pilas,% Gran Compra,0.3815028028067569,0.3815028028067563,1.6005718937093511e-15,cumple
+catalogo,Baterías y pilas,% ordinario sobre el umbral,0.006346235303747433,0.0063462353037474,5.193590288733338e-15,cumple
+catalogo,Baterías y pilas,HHI,304.339862065059,304.339862065058,3.175194054688641e-15,cumple
+catalogo,Baterías y pilas,Monto,58057759.28,58057759.28000008,1.4116353710949161e-15,cumple
+catalogo,Baterías y pilas,Participación del líder,0.0827531594326456,0.0827531594326455,1.3416080210554238e-15,cumple
+catalogo,Baterías y pilas,Participación top 3 proveedores,0.1938878611506758,0.1938878611506756,1.0020690731041425e-15,cumple
+catalogo,Baterías y pilas,Proveedores para el 80 %,31.0,31.0,0.0,cumple
+catalogo,Baterías y pilas,Órdenes,6819.0,6819.0,0.0,cumple
+catalogo,Bebidas no alcohólicas,% Gran Compra,0.23639557054273236,0.2363955705427323,2.3482314454459406e-16,cumple
+catalogo,Bebidas no alcohólicas,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Bebidas no alcohólicas,HHI,489.2698730040289,489.26987300402897,1.1618009200484727e-16,cumple
+catalogo,Bebidas no alcohólicas,Monto,37907306.89,37907306.89,0.0,cumple
+catalogo,Bebidas no alcohólicas,Participación del líder,0.12963315790962537,0.1296331579096253,6.423258384628468e-16,cumple
+catalogo,Bebidas no alcohólicas,Participación top 3 proveedores,0.3002804731824092,0.3002804731824091,3.697286782783033e-16,cumple
+catalogo,Bebidas no alcohólicas,Proveedores para el 80 %,24.0,24.0,0.0,cumple
+catalogo,Bebidas no alcohólicas,Órdenes,6358.0,6358.0,0.0,cumple
+catalogo,Bienes y herramientas diversos,% Gran Compra,0.5105851769791473,0.5105851769791471,4.34882591458584e-16,cumple
+catalogo,Bienes y herramientas diversos,% ordinario sobre el umbral,0.03331338728360865,0.0333133872836088,4.582412007111355e-15,cumple
+catalogo,Bienes y herramientas diversos,HHI,113.44683055057196,113.44683055057182,1.2526444896023018e-15,cumple
+catalogo,Bienes y herramientas diversos,Monto,385683654.42,385683654.4200002,4.636285003964619e-16,cumple
+catalogo,Bienes y herramientas diversos,Participación del líder,0.046912391807760655,0.0469123918077606,1.1832939889045412e-15,cumple
+catalogo,Bienes y herramientas diversos,Participación top 3 proveedores,0.10995140230604747,0.1099514023060474,6.310873493539409e-16,cumple
+catalogo,Bienes y herramientas diversos,Proveedores para el 80 %,100.0,100.0,0.0,cumple
+catalogo,Bienes y herramientas diversos,Órdenes,21296.0,21296.0,0.0,cumple
+catalogo,Calzado,% Gran Compra,0.5433222916314737,0.543322291631474,6.130190358790959e-16,cumple
+catalogo,Calzado,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Calzado,HHI,882.3321007490698,882.3321007490708,1.1596331343106502e-15,cumple
+catalogo,Calzado,Monto,5802001.13,5802001.129999997,4.81552426696345e-16,cumple
+catalogo,Calzado,Participación del líder,0.18520366437777652,0.1852036643777766,4.495954609031932e-16,cumple
+catalogo,Calzado,Participación top 3 proveedores,0.42897659863089344,0.4289765986308937,6.470184085615073e-16,cumple
+catalogo,Calzado,Proveedores para el 80 %,13.0,13.0,0.0,cumple
+catalogo,Calzado,Órdenes,556.0,556.0,0.0,cumple
+catalogo,"Cereales, aceite y menestras",% Gran Compra,0.5542585681208141,0.5542585681208141,0.0,cumple
+catalogo,"Cereales, aceite y menestras",% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,"Cereales, aceite y menestras",HHI,787.4439665016556,787.4439665016556,0.0,cumple
+catalogo,"Cereales, aceite y menestras",Monto,34923152.519999996,34923152.52,2.133421543961985e-16,cumple
+catalogo,"Cereales, aceite y menestras",Participación del líder,0.14452777357683977,0.1445277735768398,1.9204319646474288e-16,cumple
+catalogo,"Cereales, aceite y menestras",Participación top 3 proveedores,0.3893058088674522,0.3893058088674522,0.0,cumple
+catalogo,"Cereales, aceite y menestras",Proveedores para el 80 %,11.0,11.0,0.0,cumple
+catalogo,"Cereales, aceite y menestras",Órdenes,1358.0,1358.0,0.0,cumple
+catalogo,Componentes fotovoltaicos,% Gran Compra,0.8627152822637064,0.8627152822637069,5.147575555689736e-16,cumple
+catalogo,Componentes fotovoltaicos,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Componentes fotovoltaicos,HHI,2957.8326588112313,2957.8326588112354,1.383690908201367e-15,cumple
+catalogo,Componentes fotovoltaicos,Monto,4809297.720000001,4809297.719999998,5.809512919583684e-16,cumple
+catalogo,Componentes fotovoltaicos,Participación del líder,0.3823049199790442,0.3823049199790445,7.260062365179689e-16,cumple
+catalogo,Componentes fotovoltaicos,Participación top 3 proveedores,0.8993763209984846,0.8993763209984849,2.468873148433774e-16,cumple
+catalogo,Componentes fotovoltaicos,Proveedores para el 80 %,3.0,3.0,0.0,cumple
+catalogo,Componentes fotovoltaicos,Órdenes,58.0,58.0,0.0,cumple
+catalogo,Computadoras y escáneres,% Gran Compra,0.8343674749707264,0.8343674749707296,3.858787486324194e-15,cumple
+catalogo,Computadoras y escáneres,% ordinario sobre el umbral,0.003494555186436177,0.0034945551864361,2.2090134670242035e-14,cumple
+catalogo,Computadoras y escáneres,HHI,243.11813696932927,243.1181369693309,6.663581161521509e-15,cumple
+catalogo,Computadoras y escáneres,Monto,3135842971.3500004,3135842971.3499894,3.497386424917317e-15,cumple
+catalogo,Computadoras y escáneres,Participación del líder,0.07690911279469222,0.0769091127946924,2.3457719761141074e-15,cumple
+catalogo,Computadoras y escáneres,Participación top 3 proveedores,0.19154039470969444,0.191540394709695,2.898143303682366e-15,cumple
+catalogo,Computadoras y escáneres,Proveedores para el 80 %,73.0,73.0,0.0,cumple
+catalogo,Computadoras y escáneres,Órdenes,39587.0,39587.0,0.0,cumple
+catalogo,Césped sintético,% Gran Compra,0.7340805977853547,0.734080597785355,3.0247987154941424e-16,cumple
+catalogo,Césped sintético,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Césped sintético,HHI,2749.1833941655195,2749.183394165521,4.962353750407004e-16,cumple
+catalogo,Césped sintético,Monto,2014732.5299999998,2014732.5299999996,1.155640464364119e-16,cumple
+catalogo,Césped sintético,Participación del líder,0.4652377256250486,0.4652377256250487,2.386356401200199e-16,cumple
+catalogo,Césped sintético,Participación top 3 proveedores,0.7345042569993151,0.734504256999315,1.5115270116483365e-16,cumple
+catalogo,Césped sintético,Proveedores para el 80 %,4.0,4.0,0.0,cumple
+catalogo,Césped sintético,Órdenes,31.0,31.0,0.0,cumple
+catalogo,Diagnóstico in vitro,% Gran Compra,0.0,,0.0,cumple
+catalogo,Diagnóstico in vitro,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Diagnóstico in vitro,HHI,10000.0,10000.0,0.0,cumple
+catalogo,Diagnóstico in vitro,Monto,9796.36,9796.36,0.0,cumple
+catalogo,Diagnóstico in vitro,Participación del líder,1.0,1.0,0.0,cumple
+catalogo,Diagnóstico in vitro,Participación top 3 proveedores,1.0,1.0,0.0,cumple
+catalogo,Diagnóstico in vitro,Proveedores para el 80 %,1.0,1.0,0.0,cumple
+catalogo,Diagnóstico in vitro,Órdenes,1.0,1.0,0.0,cumple
+catalogo,Equipos multimedia,% Gran Compra,0.5931660423457285,0.5931660423457285,0.0,cumple
+catalogo,Equipos multimedia,% ordinario sobre el umbral,0.003221454209989176,0.0032214542099891,2.3693595490601733e-14,cumple
+catalogo,Equipos multimedia,HHI,319.19778361916474,319.1977836191651,1.068492736064132e-15,cumple
+catalogo,Equipos multimedia,Monto,87409015.13,87409015.12999998,1.7047625089569702e-16,cumple
+catalogo,Equipos multimedia,Participación del líder,0.06809817444055671,0.0680981744405567,2.037908933950712e-16,cumple
+catalogo,Equipos multimedia,Participación top 3 proveedores,0.18751944700008885,0.1875194470000889,2.9602876991862887e-16,cumple
+catalogo,Equipos multimedia,Proveedores para el 80 %,33.0,33.0,0.0,cumple
+catalogo,Equipos multimedia,Órdenes,3145.0,3145.0,0.0,cumple
+catalogo,Impresoras y consumibles,% Gran Compra,0.3884842838672986,0.3884842838672996,2.5720492788427842e-15,cumple
+catalogo,Impresoras y consumibles,% ordinario sobre el umbral,0.058794408264778664,0.0587944082647786,1.0621766079169188e-15,cumple
+catalogo,Impresoras y consumibles,HHI,77.6819164607239,77.68191646072445,7.134521895750272e-15,cumple
+catalogo,Impresoras y consumibles,Monto,1478248568.29,1478248568.289996,2.741836475725529e-15,cumple
+catalogo,Impresoras y consumibles,Participación del líder,0.04096160124142338,0.0409616012414234,5.08199901391314e-16,cumple
+catalogo,Impresoras y consumibles,Participación top 3 proveedores,0.08982021967631097,0.0898202196763112,2.4721004438112387e-15,cumple
+catalogo,Impresoras y consumibles,Proveedores para el 80 %,198.0,198.0,0.0,cumple
+catalogo,Impresoras y consumibles,Órdenes,145861.0,145861.0,0.0,cumple
+catalogo,Limpieza y aseo,% Gran Compra,0.3062657502985922,0.3062657502985914,2.7187737043958157e-15,cumple
+catalogo,Limpieza y aseo,% ordinario sobre el umbral,0.04946745638284974,0.0494674563828496,2.8054379227442665e-15,cumple
+catalogo,Limpieza y aseo,HHI,164.27822196236752,164.278221962367,3.114172795615393e-15,cumple
+catalogo,Limpieza y aseo,Monto,419278944.07,419278944.0700008,1.9902383333520132e-15,cumple
+catalogo,Limpieza y aseo,Participación del líder,0.06006024878224217,0.060060248782242,2.888305511797526e-15,cumple
+catalogo,Limpieza y aseo,Participación top 3 proveedores,0.14682695320307357,0.1468269532030733,1.890359706452582e-15,cumple
+catalogo,Limpieza y aseo,Proveedores para el 80 %,103.0,103.0,0.0,cumple
+catalogo,Limpieza y aseo,Órdenes,55922.0,55922.0,0.0,cumple
+catalogo,Llantas y neumáticos,% Gran Compra,0.21921341720878337,0.2192134172087833,3.798432044311494e-16,cumple
+catalogo,Llantas y neumáticos,% ordinario sobre el umbral,0.08078330350542992,0.0807833035054298,1.5461126848066426e-15,cumple
+catalogo,Llantas y neumáticos,HHI,211.64770995655954,211.64770995655948,2.6857563860471284e-16,cumple
+catalogo,Llantas y neumáticos,Monto,289506613.09,289506613.09,0.0,cumple
+catalogo,Llantas y neumáticos,Participación del líder,0.05925955209412312,0.0592595520941231,3.5127976800530214e-16,cumple
+catalogo,Llantas y neumáticos,Participación top 3 proveedores,0.16387256727448732,0.1638725672744873,1.6937292237045506e-16,cumple
+catalogo,Llantas y neumáticos,Proveedores para el 80 %,50.0,50.0,0.0,cumple
+catalogo,Llantas y neumáticos,Órdenes,24087.0,24087.0,0.0,cumple
+catalogo,Luminarias y material eléctrico,% Gran Compra,0.3706571812844126,0.3706571812844128,4.49292397672417e-16,cumple
+catalogo,Luminarias y material eléctrico,% ordinario sobre el umbral,0.0232523700487515,0.0232523700487515,0.0,cumple
+catalogo,Luminarias y material eléctrico,HHI,956.5759696861999,956.5759696862002,3.565430493479063e-16,cumple
+catalogo,Luminarias y material eléctrico,Monto,43973340.81999999,43973340.82,1.6943403566770049e-16,cumple
+catalogo,Luminarias y material eléctrico,Participación del líder,0.25789350021006663,0.2578935002100667,2.1524835323899723e-16,cumple
+catalogo,Luminarias y material eléctrico,Participación top 3 proveedores,0.44196874305171335,0.4419687430517135,3.7679916580500793e-16,cumple
+catalogo,Luminarias y material eléctrico,Proveedores para el 80 %,20.0,20.0,0.0,cumple
+catalogo,Luminarias y material eléctrico,Órdenes,3445.0,3445.0,0.0,cumple
+catalogo,Madera aserrada,% Gran Compra,0.4965607513690484,0.4965607513690483,2.235825166536428e-16,cumple
+catalogo,Madera aserrada,% ordinario sobre el umbral,0.046500370248360554,0.0465003702483605,1.1937786932613717e-15,cumple
+catalogo,Madera aserrada,HHI,400.1515214125819,400.1515214125823,9.943831542137049e-16,cumple
+catalogo,Madera aserrada,Monto,98644453.02000001,98644453.01999997,4.531778748114646e-16,cumple
+catalogo,Madera aserrada,Participación del líder,0.08025412679205506,0.0802541267920551,5.187691286121496e-16,cumple
+catalogo,Madera aserrada,Participación top 3 proveedores,0.21710127680122032,0.2171012768012204,3.835386326314719e-16,cumple
+catalogo,Madera aserrada,Proveedores para el 80 %,21.0,21.0,0.0,cumple
+catalogo,Madera aserrada,Órdenes,2498.0,2498.0,0.0,cumple
+catalogo,Maquinaria de jardinería y agricultura,% Gran Compra,0.46222690045724246,0.4622269004572424,1.2009502514099738e-16,cumple
+catalogo,Maquinaria de jardinería y agricultura,% ordinario sobre el umbral,0.013059426497751082,0.013059426497751,6.243153432882391e-15,cumple
+catalogo,Maquinaria de jardinería y agricultura,HHI,328.45207718991037,328.45207718991054,5.191937223883769e-16,cumple
+catalogo,Maquinaria de jardinería y agricultura,Monto,20941572.96,20941572.96,0.0,cumple
+catalogo,Maquinaria de jardinería y agricultura,Participación del líder,0.11486317883544503,0.114863178835445,2.416403228348053e-16,cumple
+catalogo,Maquinaria de jardinería y agricultura,Participación top 3 proveedores,0.21977747224580974,0.2197774722458098,2.525788956621153e-16,cumple
+catalogo,Maquinaria de jardinería y agricultura,Proveedores para el 80 %,40.0,40.0,0.0,cumple
+catalogo,Maquinaria de jardinería y agricultura,Órdenes,1580.0,1580.0,0.0,cumple
+catalogo,Material de laboratorio clínico,% Gran Compra,0.20217385300718896,0.202173853007189,2.7457136719496533e-16,cumple
+catalogo,Material de laboratorio clínico,% ordinario sobre el umbral,0.013725362093494132,0.0137253620934941,2.401375338518928e-15,cumple
+catalogo,Material de laboratorio clínico,HHI,1742.718805813062,1742.7188058130637,9.13294630661921e-16,cumple
+catalogo,Material de laboratorio clínico,Monto,9666979.29,9666979.289999995,3.8536239570881655e-16,cumple
+catalogo,Material de laboratorio clínico,Participación del líder,0.3162378110360057,0.3162378110360058,3.510721950003476e-16,cumple
+catalogo,Material de laboratorio clínico,Participación top 3 proveedores,0.6139117051941053,0.6139117051941057,5.425322641180763e-16,cumple
+catalogo,Material de laboratorio clínico,Proveedores para el 80 %,5.0,5.0,0.0,cumple
+catalogo,Material de laboratorio clínico,Órdenes,624.0,624.0,0.0,cumple
+catalogo,Medidores eléctricos,% Gran Compra,0.5059266862974995,0.5059266862974995,0.0,cumple
+catalogo,Medidores eléctricos,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Medidores eléctricos,HHI,3725.8177914825983,3725.8177914825983,0.0,cumple
+catalogo,Medidores eléctricos,Monto,275800.83,275800.83,0.0,cumple
+catalogo,Medidores eléctricos,Participación del líder,0.5059266862974995,0.5059266862974995,0.0,cumple
+catalogo,Medidores eléctricos,Participación top 3 proveedores,0.9883112752053719,0.988311275205372,1.1233535956517863e-16,cumple
+catalogo,Medidores eléctricos,Proveedores para el 80 %,3.0,3.0,0.0,cumple
+catalogo,Medidores eléctricos,Órdenes,7.0,7.0,0.0,cumple
+catalogo,Mobiliario,% Gran Compra,0.41113292223059733,0.4111329222305994,4.995738566527484e-15,cumple
+catalogo,Mobiliario,% ordinario sobre el umbral,0.005223248223016382,0.0052232482230164,3.4872163297722233e-15,cumple
+catalogo,Mobiliario,HHI,151.08043619285684,151.08043619285817,8.841782410025546e-15,cumple
+catalogo,Mobiliario,Monto,195524316.16,195524316.1599992,4.115409890037963e-15,cumple
+catalogo,Mobiliario,Participación del líder,0.07015766278796123,0.0701576627879615,3.758363062141813e-15,cumple
+catalogo,Mobiliario,Participación top 3 proveedores,0.12188356030611884,0.1218835603061193,3.757414014717505e-15,cumple
+catalogo,Mobiliario,Proveedores para el 80 %,73.0,73.0,0.0,cumple
+catalogo,Mobiliario,Órdenes,17817.0,17817.0,0.0,cumple
+catalogo,Pañales y afines,% Gran Compra,0.0,,0.0,cumple
+catalogo,Pañales y afines,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Pañales y afines,HHI,3714.5023585614026,3714.502358561403,1.224248383739307e-16,cumple
+catalogo,Pañales y afines,Monto,38582.11,38582.11,0.0,cumple
+catalogo,Pañales y afines,Participación del líder,0.4488616615317306,0.4488616615317306,0.0,cumple
+catalogo,Pañales y afines,Participación top 3 proveedores,1.0,1.0,0.0,cumple
+catalogo,Pañales y afines,Proveedores para el 80 %,2.0,2.0,0.0,cumple
+catalogo,Pañales y afines,Órdenes,8.0,8.0,0.0,cumple
+catalogo,Protección de circuitos,% Gran Compra,0.5708847013947053,0.5708847013947053,0.0,cumple
+catalogo,Protección de circuitos,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Protección de circuitos,HHI,4352.591430232681,4352.59143023268,2.089547609398083e-16,cumple
+catalogo,Protección de circuitos,Monto,233456.50999999995,233456.50999999995,0.0,cumple
+catalogo,Protección de circuitos,Participación del líder,0.6181142260714856,0.6181142260714855,1.796145401281798e-16,cumple
+catalogo,Protección de circuitos,Participación top 3 proveedores,0.903747640192171,0.9037476401921712,2.456931504438741e-16,cumple
+catalogo,Protección de circuitos,Proveedores para el 80 %,2.0,2.0,0.0,cumple
+catalogo,Protección de circuitos,Órdenes,13.0,13.0,0.0,cumple
+catalogo,Protección para la salud,% Gran Compra,0.5750579357400395,0.5750579357400393,3.8612562513250617e-16,cumple
+catalogo,Protección para la salud,% ordinario sobre el umbral,0.03369791197392588,0.0336979119739258,2.470975854863508e-15,cumple
+catalogo,Protección para la salud,HHI,1076.8308696216982,1076.8308696216975,6.334523327412896e-16,cumple
+catalogo,Protección para la salud,Monto,53317861.27,53317861.270000026,4.1921677386088226e-16,cumple
+catalogo,Protección para la salud,Participación del líder,0.14299497970091776,0.1429949797009177,3.88203497405032e-16,cumple
+catalogo,Protección para la salud,Participación top 3 proveedores,0.4179975953487827,0.4179975953487826,2.656051223688911e-16,cumple
+catalogo,Protección para la salud,Proveedores para el 80 %,7.0,7.0,0.0,cumple
+catalogo,Protección para la salud,Órdenes,2251.0,2251.0,0.0,cumple
+catalogo,"Tuberías, pinturas y acabados",% Gran Compra,0.6526039805207715,0.6526039805207721,8.506100619699022e-16,cumple
+catalogo,"Tuberías, pinturas y acabados",% ordinario sobre el umbral,0.020201999332947897,0.0202019993329478,4.808658442843626e-15,cumple
+catalogo,"Tuberías, pinturas y acabados",HHI,178.9053480177734,178.90534801777343,1.5886450430526226e-16,cumple
+catalogo,"Tuberías, pinturas y acabados",Monto,839698936.9,839698936.9000007,8.518002177605085e-16,cumple
+catalogo,"Tuberías, pinturas y acabados",Participación del líder,0.0895363798215141,0.089536379821514,1.2399686326812918e-15,cumple
+catalogo,"Tuberías, pinturas y acabados",Participación top 3 proveedores,0.16620449467905,0.1662044946790498,1.1689757830231078e-15,cumple
+catalogo,"Tuberías, pinturas y acabados",Proveedores para el 80 %,103.0,103.0,0.0,cumple
+catalogo,"Tuberías, pinturas y acabados",Órdenes,26427.0,26427.0,0.0,cumple
+catalogo,Tubos hematológicos,% Gran Compra,0.03288559995258512,0.0328855999525851,6.330029478475516e-16,cumple
+catalogo,Tubos hematológicos,% ordinario sobre el umbral,0.0,,0.0,cumple
+catalogo,Tubos hematológicos,HHI,9363.917254633125,9363.917254633125,0.0,cumple
+catalogo,Tubos hematológicos,Monto,43699.37,43699.37,0.0,cumple
+catalogo,Tubos hematológicos,Participación del líder,0.9671144000474148,0.9671144000474148,0.0,cumple
+catalogo,Tubos hematológicos,Participación top 3 proveedores,1.0,1.0,0.0,cumple
+catalogo,Tubos hematológicos,Proveedores para el 80 %,1.0,1.0,0.0,cumple
+catalogo,Tubos hematológicos,Órdenes,4.0,4.0,0.0,cumple
+catalogo,Vestimenta,% Gran Compra,0.5569061831646447,0.5569061831646447,0.0,cumple
+catalogo,Vestimenta,% ordinario sobre el umbral,0.14205167070844882,0.1420516707084488,1.953907016876648e-16,cumple
+catalogo,Vestimenta,HHI,4115.1069751102405,4115.106975110243,6.630408691248398e-16,cumple
+catalogo,Vestimenta,Monto,1699072.6600000001,1699072.66,1.370339533648135e-16,cumple
+catalogo,Vestimenta,Participación del líder,0.46306323356412543,0.4630632335641256,3.5963436874914787e-16,cumple
+catalogo,Vestimenta,Participación top 3 proveedores,0.9969886632158509,0.9969886632158508,1.1135763781345928e-16,cumple
+catalogo,Vestimenta,Proveedores para el 80 %,2.0,2.0,0.0,cumple
+catalogo,Vestimenta,Órdenes,51.0,51.0,0.0,cumple
+catalogo,Útiles de escritorio y papeles,% Gran Compra,0.3612993327847837,0.3612993327847827,2.7655758854053513e-15,cumple
+catalogo,Útiles de escritorio y papeles,% ordinario sobre el umbral,0.022660729143770264,0.0226607291437702,2.7558709492070076e-15,cumple
+catalogo,Útiles de escritorio y papeles,HHI,172.17920913290266,172.17920913290257,4.95211522463186e-16,cumple
+catalogo,Útiles de escritorio y papeles,Monto,1030041880.3199999,1030041880.3200006,6.94394811483278e-16,cumple
+catalogo,Útiles de escritorio y papeles,Participación del líder,0.08831113037048595,0.0883111303704859,6.285861249694744e-16,cumple
+catalogo,Útiles de escritorio y papeles,Participación top 3 proveedores,0.15879622854673173,0.1587962285467317,1.7478737290955746e-16,cumple
+catalogo,Útiles de escritorio y papeles,Proveedores para el 80 %,146.0,146.0,0.0,cumple
+catalogo,Útiles de escritorio y papeles,Órdenes,140599.0,140599.0,0.0,cumple
+global,total,% Gran Compra,0.5804925013474804,0.5804925013474814,1.721298242170614e-15,cumple
+global,total,% del monto en atípicos altos,0.11867061801356144,0.1186706180135616,1.403325073058458e-15,cumple
+global,total,% ordinario sobre el umbral,0.033967333166851243,0.0339673331668512,1.2256883170349508e-15,cumple
+global,total,Catálogos usados,29.0,29.0,0.0,cumple
+global,total,Entidades compradoras,2348.0,2348.0,0.0,cumple
+global,total,HHI,48.134779381263584,48.13477938126351,1.47615247206613e-15,cumple
+global,total,Monto,8518530614.92,8518530614.91999,1.2314820424657554e-15,cumple
+global,total,Monto Gran Compra,4944943144.460001,4944943144.460004,5.785754993814353e-16,cumple
+global,total,Monto compra efectiva,8511264017.18,8511264017.179983,2.0168728946326447e-15,cumple
+global,total,Monto compra ordinaria,3573587470.46,3573587470.4599986,4.0030123410557973e-16,cumple
+global,total,Monto con IGV exonerado,243383347.23000002,243383347.23,1.2245012950508804e-16,cumple
+global,total,Monto ordinario sobre el umbral,121385236.21,121385236.20999998,1.2275925523651175e-16,cumple
+global,total,Participación del líder,0.029043178344241173,0.0290431783442412,9.556659153020154e-16,cumple
+global,total,Participación top 10 entidades,0.14390023458189002,0.1439002345818902,1.1572841015697125e-15,cumple
+global,total,Participación top 10 proveedores,0.17366959958902412,0.1736695995890243,1.1187279165102735e-15,cumple
+global,total,Participación top 3 proveedores,0.07424328819248359,0.0742432881924836,1.8692312996475618e-16,cumple
+global,total,Proveedores con ventas,3569.0,3569.0,0.0,cumple
+global,total,Proveedores para el 80 %,576.0,576.0,0.0,cumple
+global,total,Ticket mediano,2690.4,2690.4,0.0,cumple
+global,total,Ticket promedio,16644.842168970383,16644.84216897036,1.311389595705641e-15,cumple
+global,total,Órdenes,511782.0,511782.0,0.0,cumple
+global,total,Órdenes atípicas altas,120.0,120.0,0.0,cumple
+global,total,Órdenes ordinarias sobre el umbral,785.0,785.0,0.0,cumple
+global,total,Órdenes que no son compra,340.0,340.0,0.0,cumple
